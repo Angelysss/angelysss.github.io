@@ -1,0 +1,9 @@
+{
+  "accentColor": "",
+  "cssTheme": "Dracula for Obsidian",
+  "theme": "obsidian",
+  "baseFontSize": 28,
+  "enabledCssSnippets": [
+    "overline"
+  ]
+}
