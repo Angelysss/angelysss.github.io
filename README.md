@@ -1,4 +1,4 @@
-# 杨希杰的个人网站
+# 刘志和的个人网站
 
 <https://angelysss.github.io>
 
