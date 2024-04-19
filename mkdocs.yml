@@ -1,9 +1,9 @@
 # [Info]
 # 左上角标题
-site_name: 杨希杰的个人网站
-site_url: https://yang-xijie.github.io
-site_author: 杨希杰
-site_description: 杨希杰的个人网站
+site_name: 刘志和的个人网站
+site_url: https://angelysss.github.io
+site_author: 刘志和
+site_description: 刘志和的个人网站
 
 # [Navigtion]
 nav:
@@ -401,7 +401,7 @@ repo_name: yang-xijie.github.io
 # [bottom-left corner]
 # [版权说明]
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#copyright-notice
-copyright: 杨希杰 CC-BY-4.0
+copyright: 刘志和 CC-BY-4.0
 # [bottom-right corner]
 extra:
   # [添加社交网络图标和链接]
