@@ -1,0 +1,455 @@
+<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lecture 2_Shell Tolls and Scripting | None</title><meta name="author" content="Angelysss"><meta name="copyright" content="Angelysss"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Overview本视频（Missing Semester 课程的第二讲）的核心论题是，Shell（特别是 Bash）远不止是一个简单的命令执行器，它本身就是一个功能完备且异常强大的编程环境。讲座的结论是，通过掌握 Shell 脚本的核心概念（如变量、控制流、函数）以及学会使用一系列高效的命令行工具（用于查找、搜索和导航），开发者可以将大量重复性的手动任务自动化，从而极大地提升工作效率和能力。  按">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lecture 2_Shell Tolls and Scripting">
+<meta property="og:url" content="http://example.com/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/index.html">
+<meta property="og:site_name" content="None">
+<meta property="og:description" content="Overview本视频（Missing Semester 课程的第二讲）的核心论题是，Shell（特别是 Bash）远不止是一个简单的命令执行器，它本身就是一个功能完备且异常强大的编程环境。讲座的结论是，通过掌握 Shell 脚本的核心概念（如变量、控制流、函数）以及学会使用一系列高效的命令行工具（用于查找、搜索和导航），开发者可以将大量重复性的手动任务自动化，从而极大地提升工作效率和能力。  按">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-11-07T06:43:56.000Z">
+<meta property="article:modified_time" content="2025-11-07T11:42:08.618Z">
+<meta property="article:author" content="Angelysss">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Lecture 2_Shell Tolls and Scripting",
+  "url": "http://example.com/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2025-11-07T06:43:56.000Z",
+  "dateModified": "2025-11-07T11:42:08.618Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Angelysss",
+      "url": "https://github.com/angelysss"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 7 || hour >= 21
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lecture 2_Shell Tolls and Scripting',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="web_bg" style="background-image: url(/img/background.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/top.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">None</span></a><a class="nav-page-title" href="/"><span class="site-name">Lecture 2_Shell Tolls and Scripting</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Lecture 2_Shell Tolls and Scripting</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-07T06:43:56.000Z" title="发表于 2025-11-07 14:43:56">2025-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-07T11:42:08.618Z" title="更新于 2025-11-07 19:42:08">2025-11-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Missing-Semester/">Missing Semester</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a><strong>Overview</strong></h3><p>本视频（Missing Semester 课程的第二讲）的核心论题是，Shell（特别是 Bash）远不止是一个简单的命令执行器，它本身就是一个功能完备且异常强大的编程环境。讲座的结论是，通过掌握 Shell 脚本的核心概念（如变量、控制流、函数）以及学会使用一系列高效的命令行工具（用于查找、搜索和导航），开发者可以将大量重复性的手动任务自动化，从而极大地提升工作效率和能力。</p>
+<hr>
+<h3 id="按照主题来梳理"><a href="#按照主题来梳理" class="headerlink" title="按照主题来梳理"></a><strong>按照主题来梳理</strong></h3><h4 id="第一节：Shell-脚本编程——释放-Bash-的真正力量"><a href="#第一节：Shell-脚本编程——释放-Bash-的真正力量" class="headerlink" title="第一节：Shell 脚本编程——释放 Bash 的真正力量"></a><strong>第一节：Shell 脚本编程——释放 Bash 的真正力量</strong></h4><p>大多数开发者将 Shell 视为执行单个命令的地方，但它的真正潜力在于其“脚本”能力。本节深入探讨了将 Shell (Bash) 作为一种编程语言来使用的核心概念，这是实现自动化的基石。</p>
+<ul>
+<li><p><strong>变量（Variables）</strong></p>
+<ul>
+<li><p>在 Bash 中定义变量非常直接，使用 <code>foo=bar</code> 这样的语法 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=67">01:07</a>]。但这里有一个至关重要的“怪癖”：等号两边绝对不能有空格。</p>
+</li>
+<li><p><code>foo = bar</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=93">01:33</a>]（注意空格）在 Bash 中不会被解释为变量赋值。相反，Shell 会尝试执行一个名为 <code>foo</code> 的程序，并将其余部分（<code>=</code> 和 <code>bar</code>）作为参数传递给它。这通常会导致“command not found”的错误。</p>
+</li>
+<li><p>这个特性的原因是 Shell 的设计哲学：<strong>空格是用来分隔参数的</strong>。这个规则是理解 Shell 行为的基础。</p>
+</li>
+<li><p>要访问变量的值，你需要使用美元符号 <code>$</code>，例如 <code>echo $foo</code> 将会输出 <code>bar</code>。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>字符串（Strings）与引号（Quoting）</strong></p>
+<ul>
+<li><p>在 Shell 中处理包含空格的字符串或特殊字符时，引号至关重要。Bash 主要使用两种引号：双引号 (<code>&quot;</code>) 和单引号 (<code>&#39;</code>) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=133">02:13</a>]。</p>
+</li>
+<li><p><strong>双引号 (<code>&quot;</code>)</strong>：这是“弱”引用。它会保留字符串中的大部分字面意义，但<strong>会</strong>进行变量扩展。例如，<code>echo &quot;value is $foo&quot;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=153">02:33</a>] 会输出 <code>value is bar</code>。</p>
+</li>
+<li><p><strong>单引号 (<code>&#39;</code>)</strong>：这是“强”引用。它会<strong>阻止</strong>任何形式的扩展。<code>echo &#39;value is $foo&#39;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=170">02:50</a>] 会严格按照字面意义输出 <code>value is $foo</code>。</p>
+</li>
+<li><p>理解这两种引号的区别对于编写健壮的脚本至关重要，尤其是当文件名或参数本身包含空格或 <code>$</code> 符号时。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>函数与参数（Functions &amp; Arguments）</strong></p>
+<ul>
+<li><p>Bash 允许你定义自己的函数，这对于重用代码块非常有用。一个贯穿讲座的例子是 <code>mcd</code> (Make and Change Directory) 函数 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=206">03:26</a>]，它实现了一个常见的模式：创建一个新目录，然后立刻 <code>cd</code> 进去。</p>
+</li>
+<li><p>函数体可以访问传入的参数。在 Bash 中，这些参数是通过一系列特殊的“美元变量”来访问的：</p>
+<ul>
+<li><p><code>$1</code>, <code>$2</code>, <code>$3</code>…：分别代表第一个、第二个、第三个参数 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=242">04:02</a>]。在 <code>mcd</code> 示例中，<code>mkdir $1</code> 和 <code>cd $1</code> 使用了第一个参数（即你希望创建的目录名）。</p>
+</li>
+<li><p><code>$0</code>：代表脚本本身的名称 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=327">05:27</a>]。</p>
+</li>
+<li><p><code>$#</code>：代表传递给脚本或函数的参数总数 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=775">12:55</a>]。</p>
+</li>
+<li><p><code>$@</code>：代表所有参数的列表 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=794">13:14</a>]，通常用于 <code>for</code> 循环中，以便迭代所有传入的参数。</p>
+</li>
+<li><p><code>$$</code>：代表当前 Shell 脚本的进程 ID (Process ID) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=781">13:01</a>]。</p>
+</li>
+<li><p><code>$_</code>：一个非常方便的变量，代表前一个命令的最后一个参数 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=349">05:49</a>]。例如，你可以运行 <code>mkdir my_new_dir</code>，然后运行 <code>cd $_</code>，它会自动扩展为 <code>cd my_new_dir</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>退出码与控制流（Exit Codes &amp; Control Flow）</strong></p>
+<ul>
+<li><p>这是 Shell 编程的<strong>核心心智模型</strong>。在 UNIX 哲学中，每个程序在退出时都会返回一个“退出码”（Exit Code）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=448">07:28</a>]，这是一个整数。</p>
+</li>
+<li><p><strong><code>0</code> (零) 代表成功</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=464">07:44</a>]。</p>
+</li>
+<li><p><strong>任何非零值（通常是 <code>1</code>）代表失败</strong>或错误 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=487">08:07</a>]。</p>
+</li>
+<li><p>你可以通过特殊变量 <code>$?</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=340">05:40</a>] 来获取前一个命令的退出码。例如，运行 <code>grep &quot;fubar&quot; mcd.sh</code>，如果找到了字符串，<code>$?</code> 会是 <code>0</code>；如果没找到，<code>$?</code> 会是 <code>1</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=487">08:07</a>]。</p>
+</li>
+<li><p>这个机制是 Shell 中所有控制流的基础。Bash 使用两个主要的逻辑运算符来利用退出码：<code>&amp;&amp;</code> (AND) 和 <code>||</code> (OR)。</p>
+</li>
+<li><p><strong><code>command1 &amp;&amp; command2</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=572">09:32</a>]：<code>command2</code> <strong>仅在</strong> <code>command1</code> 成功（即退出码为 <code>0</code>）时才会执行。</p>
+</li>
+<li><p><strong><code>command1 || command2</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=526">08:46</a>]：<code>command2</code> <strong>仅在</strong> <code>command1</code> 失败（即退出码为非 <code>0</code>）时才会执行。</p>
+</li>
+<li><p>这提供了一种极其强大和简洁的逻辑控制方式。例如，<code>cd some_directory || exit 1</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1565">26:05</a>] 是一个非常健壮的模式，意思是“尝试进入那个目录，如果失败了，就立刻退出脚本”，这可以防止脚本在错误的目录中继续执行。</p>
+</li>
+<li><p>视频中的 <code>example.sh</code> 脚本 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=737">12:17</a>] 演示了更复杂的 <code>if</code> 语句，它同样是基于退出码工作的：<code>if [ $? -ne 0 ]</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=924">15:24</a>] 就是在检查“上一个命令是否失败了？”</p>
+</li>
+</ul>
+</li>
+<li><p><strong>输入&#x2F;输出重定向 (I&#x2F;O Redirection)</strong></p>
+<ul>
+<li><p>Shell 脚本经常需要处理命令的输出。有时你关心输出，有时你不关心。</p>
+</li>
+<li><p>视频中的 <code>example.sh</code> 脚本使用 <code>grep fubar $file &gt; /dev/null 2&gt;&amp;1</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=874">14:34</a>] (或类似语法) 来运行一个命令，但完全不关心它的_屏幕输出_。</p>
+</li>
+<li><p><code>&gt; /dev/null</code> 的意思是将标准输出（Standard Output）重定向到 <code>/dev/null</code>（一个“黑洞”设备，会丢弃所有写入的数据）。</p>
+</li>
+<li><p><code>2&gt;&amp;1</code> 的意思是将标准错误（Standard Error，文件描述符为 2）也重定向到标准输出（文件描述符为 1）去的地方——也就是 <code>/dev/null</code>。</p>
+</li>
+<li><p>这样做的唯一目的是为了<strong>获取 <code>grep</code> 命令的退出码（<code>$?</code>）</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=861">14:21</a>]，以便知道 <code>fubar</code> 是否存在于文件中，而不会让 <code>grep</code> 的任何输出污染屏幕。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>命令替换与进程替换 (Substitution)</strong></p>
+<ul>
+<li><p><strong>命令替换 (Command Substitution)</strong>：<code>$(...)</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=616">10:16</a>]（或反引号 <code>``</code>）。这允许你将一个命令的_输出_（一个字符串）“嵌入”到另一个命令中，或赋值给一个变量。</p>
+<ul>
+<li><p><code>foo=$(pwd)</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=624">10:24</a>]：运行 <code>pwd</code> 命令，将其输出（如 <code>/home/user/docs</code>）赋值给变量 <code>foo</code>。</p>
+</li>
+<li><p><code>echo &quot;We are in $(pwd)&quot;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=651">10:51</a>]：直接在字符串中嵌入命令的输出。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>进程替换 (Process Substitution)</strong>：<code>&lt; (...)</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=673">11:13</a>]。这是一个更高级但也极其有用的功能。它不会替换为_字符串_，而是替换为一个_临时文件路径_（技术上是一个文件描述符），该文件的内容是括号内命令的输出。</p>
+</li>
+<li><p>这对于那些_期望_接收文件路径作为参数、而不是从标准输入接收数据的命令（如 <code>diff</code>）非常有用。</p>
+</li>
+<li><p>示例：<code>diff &lt;(ls foo) &lt;(ls bar)</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1313">21:53</a>]。这个命令会分别执行 <code>ls foo</code> 和 <code>ls bar</code>，将它们的输出存入两个临时文件，然后 <code>diff</code> 会比较这两个文件的内容，告诉你 <code>foo</code> 目录和 <code>bar</code> 目录的文件列表有何不同。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Globbing (文件名扩展)</strong></p>
+<ul>
+<li><p>这是 Shell 提供的一种模式匹配，用于快速选择文件。它<strong>不是</strong>正则表达式（Regex），但功能相似。</p>
+</li>
+<li><p><code>*</code> (星号)：匹配任意零个或多个字符 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1109">18:29</a>]。<code>ls *.txt</code> 会列出所有 <code>.txt</code> 文件。</p>
+</li>
+<li><p><code>?</code> (问号)：匹配任意一个字符 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1149">19:09</a>]。<code>ls project_?.md</code> 会匹配 <code>project_1.md</code> 和 <code>project_a.md</code>，但不会匹配 <code>project_10.md</code>。</p>
+</li>
+<li><p><code>{}</code> (花括号扩展)：这是最强大的功能之一。它会创建出所有可能的组合。</p>
+<ul>
+<li><p><code>mv image.{png,jpg}</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1201">20:01</a>] 会被 Shell 扩展为 <code>mv image.png image.jpg</code>。</p>
+</li>
+<li><p><code>touch {foo,bar}/{a,b,c}.txt</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1249">20:49</a>]（视频中有类似演示）会创建 <code>foo/a.txt</code>, <code>foo/b.txt</code>, <code>foo/c.txt</code>, <code>bar/a.txt</code>, <code>bar/b.txt</code>, <code>bar/c.txt</code>，这是一个笛卡尔积。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Shebang (<code>#!</code>) 与脚本可移植性</strong></p>
+<ul>
+<li><p>当你编写一个脚本（无论是 Bash、Python 还是其他语言）并希望它能像普通命令一样被执行时，你需要在文件的第一行添加一个 “Shebang”。</p>
+</li>
+<li><p>例如 <code>#!/bin/python</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1403">23:23</a>]。这行告诉操作系统：“不要用 Shell 来执行这个文件，请用 <code>/bin/python</code> 这个解释器来执行它”。</p>
+</li>
+<li><p>然而，不同系统上的 Python 路径可能不同（可能是 <code>/usr/bin/python</code> 或 <code>/usr/local/bin/python</code>）。</p>
+</li>
+<li><p>更健壮、可移植性更高的方法是使用 <code>#!/usr/bin/env python</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1456">24:16</a>]。<code>env</code> 是一个标准程序，它会根据你的 <code>PATH</code> 环境变量 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1480">24:40</a>] 自动去查找 <code>python</code> 解释器所在的位置。这使得你的脚本在几乎所有 UNIX 类系统上都能正确运行。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>脚本检查 (Linting)</strong></p>
+<ul>
+<li><p>Bash 语法非常古怪且容易出错（比如空格问题）。</p>
+</li>
+<li><p>讲座推荐了一个名为 <code>shellcheck</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1529">25:29</a>] 的工具。它是一个静态分析器（linter），可以检查你的 Bash 脚本，找出常见的语法错误、逻辑陷阱和不良实践，并给出修改建议。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="第二节：Shell-工具箱——高效开发者的利器"><a href="#第二节：Shell-工具箱——高效开发者的利器" class="headerlink" title="第二节：Shell 工具箱——高效开发者的利器"></a><strong>第二节：Shell 工具箱——高效开发者的利器</strong></h4><p>掌握了脚本编程后，讲座的第二部分转向了日常工作中用于提高效率的“工具”。这些工具的核心思想是：<strong>你永远不应该手动去做计算机可以为你做的重复性工作</strong>。</p>
+<ul>
+<li><p><strong>查找帮助 (Getting Help)</strong></p>
+<ul>
+<li><p><strong><code>man</code> (Manual Pages)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1707">28:27</a>]：这是 UNIX 系统的内置手册。<code>man ls</code> 会显示 <code>ls</code> 命令的所有选项和详细说明。这是最权威、最完整的文档，但往往非常冗长。</p>
+</li>
+<li><p><strong><code>tldr</code> (Too Long; Didn’t Read)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1791">29:51</a>]：这是一个社区驱动的工具（需要单独安装），它为命令提供了“简明扼要的”使用示例。当你忘记 <code>tar</code> 命令如何解压，或者 <code>ffmpeg</code> 如何转换视频时 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1783">29:43</a>]，<code>tldr tar</code> 会直接给你几个最常用的例子，非常实用。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找文件（按名称、路径或元数据）</strong></p>
+<ul>
+<li><p><strong><code>find</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1876">31:16</a>]：这是最经典、功能最强大的文件查找工具。它会递归地遍历目录结构。</p>
+<ul>
+<li><p><code>find . -name &quot;src&quot; -type d</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1896">31:36</a>]：在当前目录（<code>.</code>）下，查找所有名称为 <code>src</code> 且类型为目录（<code>d</code>）的文件&#x2F;文件夹。</p>
+</li>
+<li><p><code>find . -path &quot;*test*.py&quot;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1925">32:05</a>]：按完整路径匹配模式（例如，查找所有路径中包含 <code>test</code> 的 <code>.py</code> 文件）。</p>
+</li>
+<li><p><code>find . -mtime -1</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1961">32:41</a>]：查找在过去 24 小时内（<code>-1</code>）被修改过的文件。</p>
+</li>
+</ul>
+</li>
+<li><p><code>find</code> 最强大的地方在于它的 <code>-exec</code> 动作 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1998">33:18</a>]：<code>find . -name &quot;*.tmp&quot; -exec rm {} \;</code>。这个命令会找到所有 <code>.tmp</code> 文件，并对<strong>每一个</strong>找到的结果（<code>{}</code>）执行 <code>rm</code> 命令。这是将“查找”和“操作”结合起来的典范。</p>
+</li>
+<li><p><strong><code>fd</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2065">34:25</a>]：一个现代的 <code>find</code> 替代品。它通常更快，语法更简洁（例如 <code>fd &quot;src&quot;</code>），并且默认会尊重 <code>.gitignore</code> 规则，这在代码库中查找时非常方便。</p>
+</li>
+<li><p><strong><code>locate</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2123">35:23</a>]：它不直接搜索磁盘，而是搜索一个预先建立的“索引”数据库。因此 <code>locate</code> 的速度<strong>极快</strong>，但它可能找不到你刚刚创建的文件，因为它依赖于 <code>updatedb</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2165">36:05</a>] 进程（通常每晚运行）来更新索引。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找内容（在文件中搜索文本）</strong></p>
+<ul>
+<li><p><strong><code>grep</code> (Global Regular Expression Print)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2184">36:24</a>]：UNIX 的标准文本搜索工具。</p>
+</li>
+<li><p><code>grep -R &quot;fubar&quot; .</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2203">36:43</a>]：<code>-R</code> 标志让 <code>grep</code> 递归地（Recursive）搜索当前目录（<code>.</code>）下的所有文件，查找包含 “fubar” 字符串的行。</p>
+</li>
+<li><p><strong><code>ripgrep</code> (<code>rg</code>)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2272">37:52</a>]：一个现代的 <code>grep</code> 替代品。它被认为是目前最快的文本搜索工具之一。</p>
+</li>
+<li><p><code>rg</code> 的优点包括：默认递归、默认尊重 <code>.gitignore</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2288">38:08</a>]、彩色高亮输出、更快的速度。</p>
+</li>
+<li><p><code>rg</code> 有很多有用的标志，例如 <code>-C 5</code>（<code>--context=5</code>）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2306">38:26</a>] 会显示匹配行以及它“上下的 5 行”上下文，这在阅读代码时非常有用。</p>
+</li>
+<li><p>它甚至可以做反向搜索，例如 <code>rg -L &quot;shebang&quot;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2368">39:28</a>]（<code>-L</code> 对应 <code>--files-without-match</code>）会列出所有_不_包含 “shebang” 字符串的文件。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找历史（复用过去的命令）</strong></p>
+<ul>
+<li><p><strong>上箭头 (<code>Up-Arrow</code>)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2481">41:21</a>]：最基本的方式，效率低下。</p>
+</li>
+<li><p><strong><code>history</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2497">41:37</a>]：显示你所有的历史命令。一个常见的用法是 <code>history | grep &quot;docker&quot;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2520">42:00</a>]，用 <code>grep</code> 来搜索你运行过的所有 <code>docker</code> 命令。</p>
+</li>
+<li><p><strong><code>Ctrl+R</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2542">42:22</a>]：(reverse-i-search) 这是一个内置的、交互式的“反向搜索”功能。按下 <code>Ctrl+R</code> 后，你可以开始输入命令的任何部分（例如 <code>convert</code>），它会立刻从历史记录中找到最近的匹配项。</p>
+</li>
+<li><p><strong><code>fzf</code> (Fuzzy Finder)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2572">42:52</a>]：一个改变游戏规则的工具。它可以与 <code>Ctrl+R</code> 绑定 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2600">43:20</a>]，将标准的 <code>Ctrl+R</code> 替换为一个极其强大的“模糊查找”界面。你只需要输入几个零散的字符（例如 <code>cvrt icon</code>），它就能“模糊”地匹配到你想要的命令（如 <code>convert image.png icon.ico</code>），即使你输入的字符是无序的 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2627">43:47</a>]。</p>
+</li>
+<li><p><strong>历史子字符串搜索 (History Substring Search)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2648">44:08</a>]：许多 Shell（如 Zsh）支持的另一个功能。你只需输入命令的前几个字符（例如 <code>git c</code>），然后按“上箭头”，Shell 会自动只在你输入的前缀（<code>git c</code>）匹配的历史记录中循环，（例如 <code>git commit</code>, <code>git checkout</code>）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找目录（高效导航）</strong></p>
+<ul>
+<li><p><strong><code>tree</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2732">45:32</a>]：以树状结构清晰地显示目录层级。</p>
+</li>
+<li><p><strong><code>broot</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2755">45:55</a>] &#x2F; <code>ranger</code></strong>：基于终端的文件管理器。它们提供了一个交互式界面，允许你使用箭头键在目录中“漫游”，预览文件，并执行操作 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2806">46:46</a>]。</p>
+</li>
+<li><p><strong><code>autojump</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2881">48:01</a>]（或 <code>z</code>、<code>fasd</code> 等工具）：这是一种“智能”的 <code>cd</code>。它会学习你_最常_和_最近_（”frecency”）访问的目录。你不再需要输入 <code>cd ~/Documents/Projects/my-app/src/main</code>，而只需输入 <code>j my-app</code>（<code>j</code> 是 <code>autojump</code> 的命令），它就会自动“跳转”到那个你最常去的 <code>my-app</code> 目录。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="框架-心智模型-Framework-Mindset"><a href="#框架-心智模型-Framework-Mindset" class="headerlink" title="框架 &amp; 心智模型 (Framework &amp; Mindset)"></a><strong>框架 &amp; 心智模型 (Framework &amp; Mindset)</strong></h3><h4 id="框架一：将-Shell-视为一个组合式的编程环境"><a href="#框架一：将-Shell-视为一个组合式的编程环境" class="headerlink" title="框架一：将 Shell 视为一个组合式的编程环境"></a><strong>框架一：将 Shell 视为一个组合式的编程环境</strong></h4><p>视频中展示的第一个核心心智模型是<strong>停止将 Shell 视为孤立命令的执行者，而是将其视为一个用于“组合”的编程环境</strong>。UNIX 哲学的核心是“做一件事并把它做好”（Do One Thing and Do It Well）。<code>grep</code> 只负责搜索，<code>find</code> 只负责查找，<code>sort</code> 只负责排序。Shell 的魔力在于它提供了将这些简单工具“粘合”在一起的机制，以创建出极其复杂的自动化工作流。</p>
+<p>这个框架的粘合剂包括：</p>
+<ol>
+<li><p><strong>管道 (<code>|</code>)</strong>：这是最主要的粘合剂。它将一个命令的“标准输出”连接到下一个命令的“标准输入”。<code>history | grep &quot;docker&quot; | wc -l</code> 是一个完美示例：<code>history</code> 的完整列表被“导入” <code>grep</code>，<code>grep</code> 过滤后的结果被“导入” <code>wc -l</code>（字数统计）以计算行数。你动态地创建了一个“统计 docker 命令数量”的新程序。</p>
+</li>
+<li><p><strong>退出码 (<code>$?</code>) 与逻辑运算符 (<code>&amp;&amp;</code>, <code>||</code>)</strong>：这提供了“逻辑”和“控制”。它们是 Shell 的 <code>if-then-else</code>。你不必总是编写一个完整的 <code>.sh</code> 脚本文件。<code>git pull &amp;&amp; npm install</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=572">09:32</a>]（一个常见的例子）就是一个微型脚本，它在命令行上定义了逻辑：“只有在 <code>git pull</code> 成功后，才运行 <code>npm install</code>”。<code>cd my-dir || echo &quot;Directory not found&quot;</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=526">08:46</a>] 也是如此：“尝试 <code>cd</code>，如果失败了，就打印一条错误消息”。</p>
+</li>
+<li><p><strong>变量与替换 (<code>$foo</code>, <code>$(...)</code>)</strong>：这提供了“状态”和“数据传递”。通过 <code>foo=$(pwd)</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=624">10:24</a>]，你将一个命令的动态输出（当前目录）捕获到了一个“内存”（变量 <code>foo</code>）中，以便稍后在脚本的其他地方（例如 <code>echo &quot;Building in $foo&quot;</code>）重用它。</p>
+</li>
+</ol>
+<p>当你内化了这种思维，你就不会再害怕复杂的命令行。相反，你会开始主动地将你的任务分解为“我需要什么数据（<code>find</code>）？”、“我需要如何处理它（<code>grep</code>, <code>sed</code>）？”、“我需要如何组合它们（<code>|</code>）？”以及“我需要什么逻辑（<code>&amp;&amp;</code>）？”。</p>
+<h4 id="框架二：高效开发者的“查找与自动化”心智模型"><a href="#框架二：高效开发者的“查找与自动化”心智模型" class="headerlink" title="框架二：高效开发者的“查找与自动化”心智模型"></a><strong>框架二：高效开发者的“查找与自动化”心智模型</strong></h4><p>视频的第二部分（关于工具）提供了一个隐含的框架，即<strong>如何解决“我正在手动做一件重复的事”</strong>。这个心智模型的目标是：<strong>将你的时间从“执行”任务转变为“自动化”任务</strong>。</p>
+<p>这个框架可以被看作一个分层递进的查找策略：</p>
+<ol>
+<li><p><strong>查找“如何做”：<code>man</code> 与 <code>tldr</code></strong></p>
+<ul>
+<li><p>当你在任务开始时，不确定使用什么命令，或者不确定命令的正确语法时（例如“我如何解压这个 <code>.tar.gz</code> 文件？”），你的第一反应不应该是打开浏览器搜索。</p>
+</li>
+<li><p><strong>第一层：<code>tldr tar</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1791">29:51</a>]。在 5 秒内，你将看到最常见的 3-5 个用例（例如 <code>tar -xzvf ...</code>）并解决你的问题。</p>
+</li>
+<li><p><strong>第二层：<code>man tar</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1707">28:27</a>]。如果你需要一个非常规的选项（例如“排除特定目录”），<code>man</code> 手册是最终的、最完整的答案。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找“在哪里”：<code>find</code>, <code>fd</code>, <code>locate</code></strong></p>
+<ul>
+<li><p>当你面对一个庞大的代码库或文件系统，需要找到特定的“某个东西”时（例如“那个 <code>config.xml</code> 文件到底在哪？”）。</p>
+</li>
+<li><p><strong>第一层：<code>locate config.xml</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2123">35:23</a>]。如果它是一个你没有刚创建的文件，<code>locate</code> 会在 1 秒内给你答案。</p>
+</li>
+<li><p><strong>第二层：<code>fd config.xml</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2065">34:25</a>]。在代码库中，<code>fd</code> 会快速、智能地（忽略 <code>node_modules</code>）找到它。</p>
+</li>
+<li><p><strong>第三层：<code>find . -name &quot;config.xml&quot;</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1896">31:36</a>]。<code>find</code> 是最强大的，它允许你添加更复杂的逻辑，如按大小（<code>-size</code>）、修改时间（<code>-mtime</code>）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=1953">32:33</a>] 或权限来过滤。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找“它说了什么”：<code>grep</code> 与 <code>rg</code></strong></p>
+<ul>
+<li><p>当你找到了文件（或目录），但你需要知道“哪个文件包含了特定的 API 密钥”或“这个函数在哪里被调用了？”</p>
+</li>
+<li><p><strong>第一层：<code>rg &quot;functionName&quot;</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2272">37:52</a>]。<code>ripgrep</code> 会快速（默认递归、并行）搜索所有文件，并以高亮、带上下文 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2306">38:26</a>] 和行号的方式显示所有匹配项。</p>
+</li>
+<li><p><strong>第二层：<code>grep -R &quot;functionName&quot; .</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2203">36:43</a>]。<code>grep</code> 是 <code>rg</code> 的通用（但较慢）版本，在所有系统上都可用。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找“我以前做过”：<code>Ctrl+R</code> 与 <code>fzf</code></strong></p>
+<ul>
+<li><p>当你意识到“我上周刚运行过那个复杂的 <code>docker build</code> 命令，但我忘了参数……”</p>
+</li>
+<li><p><strong>第一层：<code>Ctrl+R</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2542">42:22</a>]。输入 <code>docker</code> 或 <code>build</code>，它会立即调出最近的匹配项。</p>
+</li>
+<li><p><strong>第二层：<code>fzf</code></strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2572">42:52</a>]。如果你有 <code>fzf</code>，你可以更“模糊”地搜索（<code>dckr bld</code>）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=kgII-YWo3Zw&t=2627">43:47</a>]，并从一个可滚动的列表中交互式地选择你想要的那个命令。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>最终的自动化（The Final Step）</strong>：</p>
+<p>这个框架的最后一步是，当你发现自己组合了上述工具来完成一个任务（例如，find 某些文件，然后 grep 它们的内容，最后用一个 sed 命令来修改它们）——并且你发现自己第二次在做这件事时——你就应该将这个命令流封装到一个可重用的 Shell 脚本（使用第一节中的技术）中，并将其放入你的 PATH。</p>
+<p>这就是从一个“Shell 用户”转变为一个“Shell 程序员”的完整闭环。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/angelysss">Angelysss</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/">http://example.com/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">None</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Note/">Note</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="WeChat"/></a><div class="post-qr-code-desc">WeChat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/02/Vim/" title="Vim"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-02</div><div class="info-item-2">Vim</div></div><div class="info-2"><div class="info-item-1">Missing SemesterModal editingVim is a modal editor.  Normal: for moving around a files and making edits Insert: for inserting text Command-line: for running a command Replace: for replacing text Visual(plain, line or block): for selecting blocks of text  Keystrokes have different meanings in different operating modes.e.g.x: In Insert mode will just insert a literal character ‘x’, but in Normal mode, it will delete the character under the cursor, and in Visual mode, it will delete the selectio...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E4%B8%BB%E9%A2%98%E6%9D%A5%E6%A2%B3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">按照主题来梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82%EF%BC%9AShell-%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E9%87%8A%E6%94%BE-Bash-%E7%9A%84%E7%9C%9F%E6%AD%A3%E5%8A%9B%E9%87%8F"><span class="toc-number">2.1.</span> <span class="toc-text">第一节：Shell 脚本编程——释放 Bash 的真正力量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82%EF%BC%9AShell-%E5%B7%A5%E5%85%B7%E7%AE%B1%E2%80%94%E2%80%94%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E5%88%A9%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">第二节：Shell 工具箱——高效开发者的利器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6-%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B-Framework-Mindset"><span class="toc-number">3.</span> <span class="toc-text">框架 &amp; 心智模型 (Framework &amp; Mindset)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E4%B8%80%EF%BC%9A%E5%B0%86-Shell-%E8%A7%86%E4%B8%BA%E4%B8%80%E4%B8%AA%E7%BB%84%E5%90%88%E5%BC%8F%E7%9A%84%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.</span> <span class="toc-text">框架一：将 Shell 视为一个组合式的编程环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E4%BA%8C%EF%BC%9A%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E2%80%9C%E6%9F%A5%E6%89%BE%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%E2%80%9D%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">框架二：高效开发者的“查找与自动化”心智模型</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Angelysss</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>
