@@ -1,13 +1,13 @@
-<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lecture 1_The Shell | None</title><meta name="author" content="Angelysss"><meta name="copyright" content="Angelysss"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Overview这堂课（视频）是“计算机教育中缺失的一课 (The Missing Semester of Your CS)”系列的第一讲。它的核心论题是：计算机专业的学生虽然擅长使用计算机来执行重复性任务和构建软件，但却常常忽视了那些能极大提升自己开发效率的工具 [00:34]。本课程旨在弥补这一差距，向学生展示如何充分利用已有的工具、学习新工具，并将它们组合起来，以更高效的方式在日常学习、研究">
+<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lecture 1_The Shell | None</title><meta name="author" content="Angelysss"><meta name="copyright" content="Angelysss"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Overview 这堂课（视频）是“计算机教育中缺失的一课 (The Missing Semester of Your CS)”系列的第一讲。它的核心论题是：计算机专业的学生虽然擅长使用计算机来执行重复性任务和构建软件，但却常常忽视了那些能极大提升自己开发效率的工具 [00:34]。本课程旨在弥补这一差距，向学生展示如何充分利用已有的工具、学习新工具，并将它们组合起来，以更高效的方式在日常学习、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lecture 1_The Shell">
 <meta property="og:url" content="http://example.com/2025/11/07/Lecture%201_The%20Shell/index.html">
 <meta property="og:site_name" content="None">
-<meta property="og:description" content="Overview这堂课（视频）是“计算机教育中缺失的一课 (The Missing Semester of Your CS)”系列的第一讲。它的核心论题是：计算机专业的学生虽然擅长使用计算机来执行重复性任务和构建软件，但却常常忽视了那些能极大提升自己开发效率的工具 [00:34]。本课程旨在弥补这一差距，向学生展示如何充分利用已有的工具、学习新工具，并将它们组合起来，以更高效的方式在日常学习、研究">
+<meta property="og:description" content="Overview 这堂课（视频）是“计算机教育中缺失的一课 (The Missing Semester of Your CS)”系列的第一讲。它的核心论题是：计算机专业的学生虽然擅长使用计算机来执行重复性任务和构建软件，但却常常忽视了那些能极大提升自己开发效率的工具 [00:34]。本课程旨在弥补这一差距，向学生展示如何充分利用已有的工具、学习新工具，并将它们组合起来，以更高效的方式在日常学习、">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/avatar.jpg">
 <meta property="article:published_time" content="2025-11-07T12:09:58.680Z">
-<meta property="article:modified_time" content="2025-11-08T04:13:50.257Z">
+<meta property="article:modified_time" content="2025-11-08T06:20:54.591Z">
 <meta property="article:author" content="Angelysss">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://example.com/2025/11/07/Lecture%201_The%20Shell/",
   "image": "http://example.com/img/avatar.jpg",
   "datePublished": "2025-11-07T12:09:58.680Z",
-  "dateModified": "2025-11-08T04:13:50.257Z",
+  "dateModified": "2025-11-08T06:20:54.591Z",
   "author": [
     {
       "@type": "Person",
@@ -177,216 +177,284 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="web_bg" style="background-image: url(/img/background.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/top.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">None</span></a><a class="nav-page-title" href="/"><span class="site-name">Lecture 1_The Shell</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Lecture 1_The Shell</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-07T12:09:58.680Z" title="发表于 2025-11-07 20:09:58">2025-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-08T04:13:50.257Z" title="更新于 2025-11-08 12:13:50">2025-11-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Missing-Semester/">Missing Semester</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">5.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>这堂课（视频）是“计算机教育中缺失的一课 (The Missing Semester of Your CS)”系列的第一讲。它的核心论题是：计算机专业的学生虽然擅长使用计算机来执行重复性任务和构建软件，但却常常忽视了那些能极大提升自己开发效率的工具 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=34">00:34</a>]。本课程旨在弥补这一差距，向学生展示如何充分利用已有的工具、学习新工具，并将它们组合起来，以更高效的方式在日常学习、研究和工作中使用计算机 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=65">01:05</a>]。本讲作为开篇，结论是为后续所有高级工具的学习打下基础，详细介绍最核心的交互界面——Shell（命令行外壳），包括它的工作原理、文件系统导航、权限管理，以及 Shell 最强大的特性：通过“管道”将简单程序组合成复杂的工作流。</p>
-<hr>
-<h3 id="按照主题来梳理"><a href="#按照主题来梳理" class="headerlink" title="按照主题来梳理"></a>按照主题来梳理</h3><h4 id="1-课程介绍：我们为什么需要“缺失的一课”？"><a href="#1-课程介绍：我们为什么需要“缺失的一课”？" class="headerlink" title="1. 课程介绍：我们为什么需要“缺失的一课”？"></a>1. 课程介绍：我们为什么需要“缺失的一课”？</h4><p>本课程的开设源于讲师们（Anish, Jose 和 John）在 MIT 担任助教时的一个观察：绝大多数计算机科学专业的学生，尽管深知计算机在自动化和处理重复任务上的威力，却很少将这种能力应用到自己身上 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=26">00:26</a>]。他们会编写复杂的软件，但自己的开发流程却可能效率低下。</p>
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="web_bg" style="background-image: url(/img/background.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/top.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">None</span></a><a class="nav-page-title" href="/"><span class="site-name">Lecture 1_The Shell</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Lecture 1_The Shell</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-07T12:09:58.680Z" title="发表于 2025-11-07 20:09:58">2025-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-08T06:20:54.591Z" title="更新于 2025-11-08 14:20:54">2025-11-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Missing-Semester/">Missing Semester</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">5.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="overview"><a class="markdownIt-Anchor" href="#overview"></a> Overview</h3>
+<p>这堂课（视频）是“计算机教育中缺失的一课 (The Missing Semester of Your CS)”系列的第一讲。它的核心论题是：计算机专业的学生虽然擅长使用计算机来执行重复性任务和构建软件，但却常常忽视了那些能极大提升自己开发效率的工具 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=34">00:34</a>]。本课程旨在弥补这一差距，向学生展示如何充分利用已有的工具、学习新工具，并将它们组合起来，以更高效的方式在日常学习、研究和工作中使用计算机 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=65">01:05</a>]。本讲作为开篇，结论是为后续所有高级工具的学习打下基础，详细介绍最核心的交互界面——Shell（命令行外壳），包括它的工作原理、文件系统导航、权限管理，以及 Shell 最强大的特性：通过“管道”将简单程序组合成复杂的工作流。</p>
+<hr />
+<h3 id="按照主题来梳理"><a class="markdownIt-Anchor" href="#按照主题来梳理"></a> 按照主题来梳理</h3>
+<h4 id="1-课程介绍我们为什么需要缺失的一课"><a class="markdownIt-Anchor" href="#1-课程介绍我们为什么需要缺失的一课"></a> 1. 课程介绍：我们为什么需要“缺失的一课”？</h4>
+<p>本课程的开设源于讲师们（Anish, Jose 和 John）在 MIT 担任助教时的一个观察：绝大多数计算机科学专业的学生，尽管深知计算机在自动化和处理重复任务上的威力，却很少将这种能力应用到自己身上 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=26">00:26</a>]。他们会编写复杂的软件，但自己的开发流程却可能效率低下。</p>
 <p>这门课的目的就是为了解决这个问题，它尝试为你展示一系列能极大提升你日常效率的工具。课程的目标分为三个层面：</p>
 <ol>
-<li><p><strong>精通已知工具</strong>：教会你如何最大限度地利用你已经了解的工具。</p>
+<li>
+<p><strong>精通已知工具</strong>：教会你如何最大限度地利用你已经了解的工具。</p>
 </li>
-<li><p><strong>学习未知工具</strong>：向你介绍你可能闻所未闻的强大新工具。</p>
+<li>
+<p><strong>学习未知工具</strong>：向你介绍你可能闻所未闻的强大新工具。</p>
 </li>
-<li><p><strong>组合工具</strong>：展示如何将这些工具组合起来，实现远超你想象的强大功能 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=79">01:19</a>]。</p>
+<li>
+<p><strong>组合工具</strong>：展示如何将这些工具组合起来，实现远超你想象的强大功能 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=79">01:19</a>]。</p>
 </li>
 </ol>
 <p><strong>课程结构与安排：</strong></p>
 <ul>
-<li><p><strong>形式</strong>：课程由 11 节一小时的讲座组成，每一节都围绕一个特定主题 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=91">01:31</a>]。</p>
+<li>
+<p><strong>形式</strong>：课程由 11 节一小时的讲座组成，每一节都围绕一个特定主题 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=91">01:31</a>]。</p>
 </li>
-<li><p><strong>独立性</strong>：大部分讲座主题是相互独立的，你可以选择你感兴趣的收听。但课程会默认你跟上了进度，例如，后续课程不会再重复教授本节的 <code>bash</code> 基础知识 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=110">01:50</a>]。</p>
+<li>
+<p><strong>独立性</strong>：大部分讲座主题是相互独立的，你可以选择你感兴趣的收听。但课程会默认你跟上了进度，例如，后续课程不会再重复教授本节的 <code>bash</code> 基础知识 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=110">01:50</a>]。</p>
 </li>
-<li><p><strong>资源</strong>：所有的课程讲义和视频录像都会发布在课程网站上 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=123">02:03</a>]。</p>
+<li>
+<p><strong>资源</strong>：所有的课程讲义和视频录像都会发布在课程网站上 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=123">02:03</a>]。</p>
 </li>
-<li><p><strong>答疑 (Office Hours)</strong>：每节课后，讲师们都会在 Stata Center (32 号楼) 9 层的休息室提供答疑时间，你可以在那里提问或尝试课程的练习 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=164">02:44</a>]。</p>
+<li>
+<p><strong>答疑 (Office Hours)</strong>：每节课后，讲师们都会在 Stata Center (32 号楼) 9 层的休息室提供答疑时间，你可以在那里提问或尝试课程的练习 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=164">02:44</a>]。</p>
 </li>
 </ul>
 <p><strong>课程范围与期望：</strong></p>
-<p>由于时间有限（总共只有 11 个小时），课程无法深入到每个工具的所有细节 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=190">03:10</a>]。课程的重点是<strong>高亮展示 (highlight)</strong> 那些有趣的工具和它们有趣的使用方式，而不是详尽的深入研究。</p>
-<p>本节课将从我们与计算机交互的最核心的界面——Shell（命令行外壳）开始。我们将涵盖基础知识，并为后续课程（如 Shell 脚本、编辑器、数据处理等）快速打好基础 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=225">03:45</a>]。</p>
-<h4 id="2-Shell-基础：进入文本驱动的世界"><a href="#2-Shell-基础：进入文本驱动的世界" class="headerlink" title="2. Shell 基础：进入文本驱动的世界"></a>2. Shell 基础：进入文本驱动的世界</h4><p>本讲的主题是 <strong>Shell</strong>（命令行外壳）。这是当你跳出图形用户界面 (GUI) 限制后，与计算机交互的主要方式 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=250">04:10</a>]。</p>
+<p>由于时间有限（总共只有 11 个小时），课程无法深入到每个工具的所有细节 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=190">03:10</a>]。课程的重点是<strong>高亮展示 (highlight)</strong> 那些有趣的工具和它们有趣的使用方式，而不是详尽的深入研究。</p>
+<p>本节课将从我们与计算机交互的最核心的界面——Shell（命令行外壳）开始。我们将涵盖基础知识，并为后续课程（如 Shell 脚本、编辑器、数据处理等）快速打好基础 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=225">03:45</a>]。</p>
+<h4 id="2-shell-基础进入文本驱动的世界"><a class="markdownIt-Anchor" href="#2-shell-基础进入文本驱动的世界"></a> 2. Shell 基础：进入文本驱动的世界</h4>
+<p>本讲的主题是 <strong>Shell</strong>（命令行外壳）。这是当你跳出图形用户界面 (GUI) 限制后，与计算机交互的主要方式 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=250">04:10</a>]。</p>
 <p><strong>为什么选择 Shell 而非图形界面 (GUI)？</strong></p>
 <ul>
-<li><p>图形界面（例如你用鼠标点击的按钮、拖动的滑块）在功能上是受限的。你只能执行那些被设计者预先“制作成按钮”的功能 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=266">04:26</a>]。</p>
+<li>
+<p>图形界面（例如你用鼠标点击的按钮、拖动的滑块）在功能上是受限的。你只能执行那些被设计者预先“制作成按钮”的功能 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=266">04:26</a>]。</p>
 </li>
-<li><p>相比之下，文本工具被设计为<strong>可组合的 (composable)</strong> 和<strong>可自动化的 (automatable)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=271">04:31</a>]。你可以将多个简单的文本工具串联起来，完成复杂任务，或者编写脚本让它们自动执行。这是 Shell 强大力量的根源。</p>
+<li>
+<p>相比之下，文本工具被设计为<strong>可组合的 (composable)</strong> 和<strong>可自动化的 (automatable)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=271">04:31</a>]。你可以将多个简单的文本工具串联起来，完成复杂任务，或者编写脚本让它们自动执行。这是 Shell 强大力量的根源。</p>
 </li>
 </ul>
 <p><strong>Shell 的形态：</strong></p>
 <ul>
-<li><p><strong>Windows</strong>: 常见的 Shell 是 <code>PowerShell</code>。</p>
+<li>
+<p><strong>Windows</strong>: 常见的 Shell 是 <code>PowerShell</code>。</p>
 </li>
-<li><p><strong>Linux</strong>: 有各种各样的 Shell，最常见的是 <code>bash</code>（全称是 Born Again Shell）。本课程将主要使用 <code>bash</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=308">05:08</a>]。</p>
+<li>
+<p><strong>Linux</strong>: 有各种各样的 Shell，最常见的是 <code>bash</code>（全称是 Born Again Shell）。本课程将主要使用 <code>bash</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=308">05:08</a>]。</p>
 </li>
-<li><p><strong>macOS</strong>: 默认的 <code>Terminal</code> (终端) 应用打开的也是 <code>bash</code>（尽管可能是较老的版本）或 <code>zsh</code>（功能与 <code>bash</code> 相近）。</p>
+<li>
+<p><strong>macOS</strong>: 默认的 <code>Terminal</code> (终端) 应用打开的也是 <code>bash</code>（尽管可能是较老的版本）或 <code>zsh</code>（功能与 <code>bash</code> 相近）。</p>
 </li>
 </ul>
-<p>当你打开一个终端时，你看到的那个闪烁的光标和它前面的文字，就是 <strong>Shell 提示符 (Shell Prompt)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=363">06:03</a>]。它通常显示你的<code>用户名@机器名 当前路径 $</code>。这个提示符是可以高度自定义的，它在“提示”你输入命令。</p>
+<p>当你打开一个终端时，你看到的那个闪烁的光标和它前面的文字，就是 <strong>Shell 提示符 (Shell Prompt)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=363">06:03</a>]。它通常显示你的<code>用户名@机器名 当前路径 $</code>。这个提示符是可以高度自定义的，它在“提示”你输入命令。</p>
 <p><strong>Shell 的核心工作：执行程序</strong></p>
-<p>Shell 的基本工作模式是：你输入一个<strong>命令 (program)</strong>，后面可以跟上零个或多个<strong>参数 (arguments)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=412">06:52</a>]。</p>
+<p>Shell 的基本工作模式是：你输入一个<strong>命令 (program)</strong>，后面可以跟上零个或多个<strong>参数 (arguments)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=412">06:52</a>]。</p>
 <ul>
-<li><p><strong>示例 1：无参数命令</strong></p>
+<li>
+<p><strong>示例 1：无参数命令</strong></p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span></span><br></pre></td></tr></table></figure>
-<p>  输入 <code>date</code> 并回车，Shell 会执行 <code>date</code> 程序，该程序打印当前的日期和时间 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=425">07:05</a>]。</p>
+<p>输入 <code>date</code> 并回车，Shell 会执行 <code>date</code> 程序，该程序打印当前的日期和时间 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=425">07:05</a>]。</p>
 </li>
-<li><p><strong>示例 2：带参数命令</strong></p>
+<li>
+<p><strong>示例 2：带参数命令</strong></p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure>
-<p>  <code>echo</code> 是一个程序，它的功能是“回显”你给它的所有参数。这里 <code>hello</code> 是参数，所以它会在屏幕上打印 <code>hello</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=437">07:17</a>]。</p>
+<p><code>echo</code> 是一个程序，它的功能是“回显”你给它的所有参数。这里 <code>hello</code> 是参数，所以它会在屏幕上打印 <code>hello</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=437">07:17</a>]。</p>
 </li>
-<li><p>参数如何界定：空格与引号</p>
-<p>  Shell 默认使用空白字符 (whitespace)（如空格、Tab键）来分隔参数。</p>
+<li>
+<p>参数如何界定：空格与引号</p>
+<p>Shell 默认使用空白字符 (whitespace)（如空格、Tab键）来分隔参数。</p>
 <ul>
-<li><p><code>echo hello world</code> 会被识别为两个参数：<code>hello</code> 和 <code>world</code>。</p>
+<li>
+<p><code>echo hello world</code> 会被识别为两个参数：<code>hello</code> 和 <code>world</code>。</p>
 </li>
-<li><p><strong>问题</strong>：如果你想让 <code>hello world</code> 成为一个<em>单独的</em>参数怎么办？</p>
+<li>
+<p><strong>问题</strong>：如果你想让 <code>hello world</code> 成为一个<em>单独的</em>参数怎么办？</p>
 </li>
-<li><p><strong>方案 1：引号</strong>。你可以使用双引号 (<code>&quot;</code>) 或单引号 (<code>&#39;</code>) 将参数括起来。</p>
+<li>
+<p><strong>方案 1：引号</strong>。你可以使用双引号 (<code>&quot;</code>) 或单引号 (<code>'</code>) 将参数括起来。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
-<p>  这样，<code>echo</code> 程序只会收到一个参数，即字符串 <code>hello world</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=462">07:42</a>]。</p>
+<p>这样，<code>echo</code> 程序只会收到一个参数，即字符串 <code>hello world</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=462">07:42</a>]。</p>
 </li>
-<li><p><strong>方案 2：转义字符</strong>。你可以在空格前使用反斜杠 (<code>\</code>) 来“转义”这个空格，告诉 Shell 这个空格只是一个普通字符，而不是分隔符。</p>
+<li>
+<p><strong>方案 2：转义字符</strong>。你可以在空格前使用反斜杠 (<code>\</code>) 来“转义”这个空格，告诉 Shell 这个空格只是一个普通字符，而不是分隔符。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> hello\ world</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重要性：理解这一点至关重要。一个常见的错误是创建带空格的目录：</p>
-<p>  mkdir my photos</p>
-<p>  这不会创建一个名为 “my photos” 的目录，而是会创建两个目录，分别名为 “my” 和 “photos” [08:29]。正确的做法是 mkdir “my photos”。</p>
+<li>
+<p>重要性：理解这一点至关重要。一个常见的错误是创建带空格的目录：</p>
+<p>mkdir my photos</p>
+<p>这不会创建一个名为 “my photos” 的目录，而是会创建两个目录，分别名为 “my” 和 “photos” [08:29]。正确的做法是 mkdir “my photos”。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h4 id="3-Shell-如何找到程序：PATH-环境变量与文件路径"><a href="#3-Shell-如何找到程序：PATH-环境变量与文件路径" class="headerlink" title="3. Shell 如何找到程序：PATH 环境变量与文件路径"></a>3. Shell 如何找到程序：PATH 环境变量与文件路径</h4><p>你可能会想：当我输入 <code>date</code> 或 <code>echo</code> 时，Shell 是如何“知道”这些程序是什么、在哪里，以及如何运行它们的？</p>
-<p>答案是，这些程序是存在于你计算机文件系统上的可执行文件。Shell 通过一个名为 <code>PATH</code> 的<strong>环境变量 (Environment Variable)</strong> 来查找它们 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=560">09:20</a>]。</p>
+<h4 id="3-shell-如何找到程序path-环境变量与文件路径"><a class="markdownIt-Anchor" href="#3-shell-如何找到程序path-环境变量与文件路径"></a> 3. Shell 如何找到程序：PATH 环境变量与文件路径</h4>
+<p>你可能会想：当我输入 <code>date</code> 或 <code>echo</code> 时，Shell 是如何“知道”这些程序是什么、在哪里，以及如何运行它们的？</p>
+<p>答案是，这些程序是存在于你计算机文件系统上的可执行文件。Shell 通过一个名为 <code>PATH</code> 的<strong>环境变量 (Environment Variable)</strong> 来查找它们 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=560">09:20</a>]。</p>
 <p><strong>Shell 作为编程语言：</strong></p>
-<p>在深入 <code>PATH</code> 之前，你需要知道：Shell 本身就是一种编程语言 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=575">09:35</a>]。你可以在 Shell 提示符下定义变量、使用循环 (for &#x2F; while)、条件判断 (if)，这些我们将在下一讲（Shell 脚本）中详细介绍。</p>
+<p>在深入 <code>PATH</code> 之前，你需要知道：Shell 本身就是一种编程语言 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=575">09:35</a>]。你可以在 Shell 提示符下定义变量、使用循环 (for / while)、条件判断 (if)，这些我们将在下一讲（Shell 脚本）中详细介绍。</p>
 <p><strong>环境变量 <code>PATH</code>：</strong></p>
 <p>环境变量是 Shell 启动时就自动设置好的一系列变量（例如你的用户名 <code>USER</code>、你的主目录 <code>HOME</code>）。<code>PATH</code> 是其中最关键的一个。</p>
 <ul>
-<li><p>你可以使用 <code>echo</code> 命令来查看 <code>PATH</code> 变量的值（变量名前需要加 <code>$</code>）：</p>
+<li>
+<p>你可以使用 <code>echo</code> 命令来查看 <code>PATH</code> 变量的值（变量名前需要加 <code>$</code>）：</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>你会看到一长串由冒号 (:) 分隔的目录列表，例如：</p>
-<p>  &#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;sbin</p>
+<li>
+<p>你会看到一长串由冒号 (😃 分隔的目录列表，例如：</p>
+<p>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</p>
 </li>
-<li><p><strong>查找机制</strong>：当你输入一个命令（如 <code>echo</code>）时，Shell 会：</p>
+<li>
+<p><strong>查找机制</strong>：当你输入一个命令（如 <code>echo</code>）时，Shell 会：</p>
 <ol>
-<li><p>依次查看 <code>PATH</code> 变量中的<em>每一个</em>目录。</p>
+<li>
+<p>依次查看 <code>PATH</code> 变量中的<em>每一个</em>目录。</p>
 </li>
-<li><p>检查该目录中是否存在一个与你输入的命令同名的可执行文件。</p>
+<li>
+<p>检查该目录中是否存在一个与你输入的命令同名的可执行文件。</p>
 </li>
-<li><p>一旦找到<em>第一个</em>匹配的，Shell 就会停止搜索并执行该文件 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=637">10:37</a>]。</p>
+<li>
+<p>一旦找到<em>第一个</em>匹配的，Shell 就会停止搜索并执行该文件 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=637">10:37</a>]。</p>
 </li>
 </ol>
 </li>
-<li><p><strong><code>which</code> 命令</strong>：如果你想知道 Shell <em>具体</em>会执行哪一个文件，可以使用 <code>which</code> 命令：</p>
+<li>
+<p><strong><code>which</code> 命令</strong>：如果你想知道 Shell <em>具体</em>会执行哪一个文件，可以使用 <code>which</code> 命令：</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">echo</span></span><br></pre></td></tr></table></figure>
-<p>  它可能会返回 <code>/usr/bin/echo</code>，告诉你 <code>echo</code> 命令对应的程序文件路径 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=659">10:59</a>]。</p>
+<p>它可能会返回 <code>/usr/bin/echo</code>，告诉你 <code>echo</code> 命令对应的程序文件路径 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=659">10:59</a>]。</p>
 </li>
 </ul>
 <p><strong>理解路径 (Path)：</strong></p>
 <ul>
-<li><p><strong>路径</strong>：就是文件在文件系统中的位置。</p>
+<li>
+<p><strong>路径</strong>：就是文件在文件系统中的位置。</p>
 </li>
-<li><p><strong>Linux&#x2F;macOS</strong>: 使用正斜杠 (<code>/</code>) 作为分隔符。所有路径都始于一个唯一的“根”目录 (<code>/</code>) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=681">11:21</a>]。</p>
+<li>
+<p><strong>Linux/macOS</strong>: 使用正斜杠 (<code>/</code>) 作为分隔符。所有路径都始于一个唯一的“根”目录 (<code>/</code>) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=681">11:21</a>]。</p>
 </li>
-<li><p><strong>Windows</strong>: 使用反斜杠 (<code>\</code>) 作为分隔符。并且有多个“根”，例如 <code>C:\</code> 或 <code>D:\</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=704">11:44</a>]。</p>
+<li>
+<p><strong>Windows</strong>: 使用反斜杠 (<code>\</code>) 作为分隔符。并且有多个“根”，例如 <code>C:\</code> 或 <code>D:\</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=704">11:44</a>]。</p>
 </li>
 </ul>
-<p><strong>绝对路径 (Absolute Path) vs. 相对路径 (Relative Path)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=739">12:19</a>]</p>
+<p><strong>绝对路径 (Absolute Path) vs. 相对路径 (Relative Path)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=739">12:19</a>]</p>
 <ul>
-<li><p><strong>绝对路径</strong>：从“根”目录开始的完整路径，它唯一确定了一个文件的位置。例如：<code>/usr/bin/echo</code>。</p>
+<li>
+<p><strong>绝对路径</strong>：从“根”目录开始的完整路径，它唯一确定了一个文件的位置。例如：<code>/usr/bin/echo</code>。</p>
 </li>
-<li><p><strong>相对路径</strong>：从“当前所在位置”开始的路径。</p>
+<li>
+<p><strong>相对路径</strong>：从“当前所在位置”开始的路径。</p>
 </li>
 </ul>
-<h4 id="4-文件系统导航与操作"><a href="#4-文件系统导航与操作" class="headerlink" title="4. 文件系统导航与操作"></a>4. 文件系统导航与操作</h4><p>为了使用相对路径，我们首先需要知道“当前所在位置”以及如何改变它。</p>
+<h4 id="4-文件系统导航与操作"><a class="markdownIt-Anchor" href="#4-文件系统导航与操作"></a> 4. 文件系统导航与操作</h4>
+<p>为了使用相对路径，我们首先需要知道“当前所在位置”以及如何改变它。</p>
 <p><strong>核心导航命令：</strong></p>
 <ul>
-<li><p><strong><code>pwd</code> (Print Working Directory)</strong>：打印“当前工作目录”，即你现在所处的位置 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=769">12:49</a>]。</p>
+<li>
+<p><strong><code>pwd</code> (Print Working Directory)</strong>：打印“当前工作目录”，即你现在所处的位置 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=769">12:49</a>]。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 输出: /home/john/dev/missing-semester</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong><code>cd</code> (Change Directory)</strong>：改变你的当前工作目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=801">13:21</a>]。</p>
+<li>
+<p><strong><code>cd</code> (Change Directory)</strong>：改变你的当前工作目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=801">13:21</a>]。</p>
 <ul>
-<li><p><code>cd /home</code>：使用<em>绝对路径</em>切换到 <code>/home</code> 目录。</p>
+<li>
+<p><code>cd /home</code>：使用<em>绝对路径</em>切换到 <code>/home</code> 目录。</p>
 </li>
-<li><p><code>cd ..</code>：切换到<strong>父目录</strong>（上一级目录）。<code>..</code> 是一个始终指向父目录的特殊名称 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=841">14:01</a>]。</p>
+<li>
+<p><code>cd ..</code>：切换到<strong>父目录</strong>（上一级目录）。<code>..</code> 是一个始终指向父目录的特殊名称 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=841">14:01</a>]。</p>
 </li>
-<li><p><code>cd .</code>：切换到<strong>当前目录</strong>（这基本没用，但 <code>.</code> 是指向当前目录的特殊名称） [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=833">13:53</a>]。</p>
+<li>
+<p><code>cd .</code>：切换到<strong>当前目录</strong>（这基本没用，但 <code>.</code> 是指向当前目录的特殊名称） [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=833">13:53</a>]。</p>
 </li>
-<li><p><code>cd ./my_project</code>：切换到当前目录下的 <code>my_project</code> 目录（这里的 <code>./</code> 通常可以省略）。</p>
+<li>
+<p><code>cd ./my_project</code>：切换到当前目录下的 <code>my_project</code> 目录（这里的 <code>./</code> 通常可以省略）。</p>
 </li>
 </ul>
 </li>
 </ul>
 <p><strong>快捷导航技巧：</strong></p>
 <ul>
-<li><p><strong><code>~</code> (Tilde)</strong>：波浪号 <code>~</code> 是一个快捷方式，始终代表你的<strong>主目录</strong> (Home Directory)，例如 <code>/home/john</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1034">17:14</a>]。</p>
+<li>
+<p><strong><code>~</code> (Tilde)</strong>：波浪号 <code>~</code> 是一个快捷方式，始终代表你的<strong>主目录</strong> (Home Directory)，例如 <code>/home/john</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1034">17:14</a>]。</p>
 <ul>
-<li><p><code>cd ~</code> 或只输入 <code>cd</code>：快速返回你的主目录。</p>
+<li>
+<p><code>cd ~</code> 或只输入 <code>cd</code>：快速返回你的主目录。</p>
 </li>
-<li><p><code>cd ~/dev/project</code>：从任何位置快速切换到你主目录下的 <code>dev/project</code>。</p>
+<li>
+<p><code>cd ~/dev/project</code>：从任何位置快速切换到你主目录下的 <code>dev/project</code>。</p>
 </li>
 </ul>
 </li>
-<li><p><strong><code>cd -</code> (Dash)</strong>：切换到你<strong>上一次</strong>所在的目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1058">17:38</a>]。这在两个目录间频繁切换时非常有用。</p>
+<li>
+<p><strong><code>cd -</code> (Dash)</strong>：切换到你<strong>上一次</strong>所在的目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1058">17:38</a>]。这在两个目录间频繁切换时非常有用。</p>
 </li>
 </ul>
 <p><strong>查看与管理文件：</strong></p>
 <ul>
-<li><p><strong><code>ls</code> (List)</strong>：列出当前目录下的文件和目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=983">16:23</a>]。</p>
+<li>
+<p><strong><code>ls</code> (List)</strong>：列出当前目录下的文件和目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=983">16:23</a>]。</p>
 <ul>
 <li><code>ls ..</code>：你也可以给 <code>ls</code> 一个路径，让它列出<em>其他</em>目录的内容。</li>
 </ul>
 </li>
-<li><p><strong>获取帮助</strong>：</p>
+<li>
+<p><strong>获取帮助</strong>：</p>
 <ul>
-<li><p><code>ls --help</code>：大多数程序都支持 <code>--help</code> 参数，会打印出简要的用法说明和参数列表 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1099">18:19</a>]。</p>
+<li>
+<p><code>ls --help</code>：大多数程序都支持 <code>--help</code> 参数，会打印出简要的用法说明和参数列表 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1099">18:19</a>]。</p>
 </li>
-<li><p><code>man ls</code>：<code>man</code> (Manual) 命令会显示一个程序完整的“手册页” [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1618">26:58</a>]。内容更详细，使用方向键浏览，按 <code>q</code> 键退出。</p>
+<li>
+<p><code>man ls</code>：<code>man</code> (Manual) 命令会显示一个程序完整的“手册页” [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1618">26:58</a>]。内容更详细，使用方向键浏览，按 <code>q</code> 键退出。</p>
 </li>
 </ul>
 </li>
-<li><p><strong>文件操作命令</strong>：</p>
+<li>
+<p><strong>文件操作命令</strong>：</p>
 <ul>
-<li><p><code>mv [source] [destination]</code>：<strong>移动 (Move)</strong> 或<strong>重命名 (Rename)</strong> 文件。</p>
+<li>
+<p><code>mv [source] [destination]</code>：<strong>移动 (Move)</strong> 或<strong>重命名 (Rename)</strong> 文件。</p>
 <ul>
-<li><p><code>mv old_name.txt new_name.txt</code> (重命名)</p>
+<li>
+<p><code>mv old_name.txt new_name.txt</code> (重命名)</p>
 </li>
-<li><p><code>mv file.txt ../backup/</code> (移动) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1469">24:29</a>]</p>
-</li>
-</ul>
-</li>
-<li><p><code>cp [source] [destination]</code>：<strong>复制 (Copy)</strong> 文件 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1516">25:16</a>]。</p>
-</li>
-<li><p><code>rm [file]</code>：<strong>移除 (Remove)</strong> 文件。注意：在 Linux&#x2F;macOS 上，<code>rm</code> 默认是永久删除，没有回收站 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1544">25:44</a>]。</p>
-</li>
-<li><p><code>mkdir [directory_name]</code>：<strong>创建 (Make)</strong> 目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1588">26:28</a>]。</p>
-</li>
-<li><p><code>rmdir [directory_name]</code>：<strong>移除 (Remove)</strong> 目录，但它只允许你删除<strong>空目录</strong>（这是一种安全机制） [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1570">26:10</a>]。</p>
-</li>
-<li><p><code>rm -r [directory_name]</code>：如果你想删除一个非空目录及其中的所有内容，需要使用 <code>rm</code> 的 <code>-r</code> (Recursive，递归) 参数。<strong>这是一个非常危险的命令，使用前请三思。</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1566">26:06</a>]</p>
+<li>
+<p><code>mv file.txt ../backup/</code> (移动) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1469">24:29</a>]</p>
 </li>
 </ul>
 </li>
+<li>
+<p><code>cp [source] [destination]</code>：<strong>复制 (Copy)</strong> 文件 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1516">25:16</a>]。</p>
+</li>
+<li>
+<p><code>rm [file]</code>：<strong>移除 (Remove)</strong> 文件。注意：在 Linux/macOS 上，<code>rm</code> 默认是永久删除，没有回收站 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1544">25:44</a>]。</p>
+</li>
+<li>
+<p><code>mkdir [directory_name]</code>：<strong>创建 (Make)</strong> 目录 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1588">26:28</a>]。</p>
+</li>
+<li>
+<p><code>rmdir [directory_name]</code>：<strong>移除 (Remove)</strong> 目录，但它只允许你删除<strong>空目录</strong>（这是一种安全机制） [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1570">26:10</a>]。</p>
+</li>
+<li>
+<p><code>rm -r [directory_name]</code>：如果你想删除一个非空目录及其中的所有内容，需要使用 <code>rm</code> 的 <code>-r</code> (Recursive，递归) 参数。<strong>这是一个非常危险的命令，使用前请三思。</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1566">26:06</a>]</p>
+</li>
 </ul>
-<h4 id="5-深入理解文件权限：ls-l-的秘密"><a href="#5-深入理解文件权限：ls-l-的秘密" class="headerlink" title="5. 深入理解文件权限：ls -l 的秘密"></a>5. 深入理解文件权限：<code>ls -l</code> 的秘密</h4><p>当你使用 <code>ls</code> 的 <code>-l</code>（long，长格式）参数时，你会看到更详细的信息：</p>
+</li>
+</ul>
+<h4 id="5-深入理解文件权限ls-l-的秘密"><a class="markdownIt-Anchor" href="#5-深入理解文件权限ls-l-的秘密"></a> 5. 深入理解文件权限：<code>ls -l</code> 的秘密</h4>
+<p>当你使用 <code>ls</code> 的 <code>-l</code>（long，长格式）参数时，你会看到更详细的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br><span class="line"><span class="comment"># 输出:</span></span><br><span class="line"><span class="comment"># drwxr-xr-x 2 john john 4096 Feb 2 10:30 my_directory</span></span><br><span class="line"><span class="comment"># -rw-r--r-- 1 john john 1024 Feb 1 09:00 my_file.txt</span></span><br></pre></td></tr></table></figure>
-
-<p>这串输出包含了丰富的信息，最重要的是开头的权限字符串，例如 <code>drwxr-xr-x</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1216">20:16</a>]。</p>
+<p>这串输出包含了丰富的信息，最重要的是开头的权限字符串，例如 <code>drwxr-xr-x</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1216">20:16</a>]。</p>
 <ul>
-<li><p><strong>第一个字符</strong>：文件类型。</p>
+<li>
+<p><strong>第一个字符</strong>：文件类型。</p>
 <ul>
-<li><p><code>d</code>：代表这是一个<strong>目录 (Directory)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1205">20:05</a>]。</p>
+<li>
+<p><code>d</code>：代表这是一个<strong>目录 (Directory)</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1205">20:05</a>]。</p>
 </li>
-<li><p><code>-</code>：代表这是一个<strong>普通文件 (File)</strong>。</p>
+<li>
+<p><code>-</code>：代表这是一个<strong>普通文件 (File)</strong>。</p>
 </li>
 </ul>
 </li>
-<li><p><strong>后续 9 个字符</strong>：权限信息，每 3 个一组。</p>
+<li>
+<p><strong>后续 9 个字符</strong>：权限信息，每 3 个一组。</p>
 <ul>
-<li><p><strong>第 1 组 (rwx)</strong>：文件<strong>所有者 (Owner)</strong>（例子中是 <code>john</code>）的权限。</p>
+<li>
+<p><strong>第 1 组 (rwx)</strong>：文件<strong>所有者 (Owner)</strong>（例子中是 <code>john</code>）的权限。</p>
 </li>
-<li><p><strong>第 2 组 (r-x)</strong>：文件<strong>所属组 (Group)</strong>（例子中是 <code>john</code> 组）的权限。</p>
+<li>
+<p><strong>第 2 组 (r-x)</strong>：文件<strong>所属组 (Group)</strong>（例子中是 <code>john</code> 组）的权限。</p>
 </li>
-<li><p><strong>第 3 组 (r-x)</strong>：<strong>其他人 (Others)</strong>（既不是所有者，也不在所属组）的权限。</p>
+<li>
+<p><strong>第 3 组 (r-x)</strong>：<strong>其他人 (Others)</strong>（既不是所有者，也不在所属组）的权限。</p>
 </li>
 </ul>
 </li>
@@ -401,7 +469,8 @@
 <th><strong>对 目录 意味着… [22:15]</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong><code>r</code> (Read)</strong></td>
 <td><strong>读取</strong>：可以读取文件的内容。</td>
 <td><strong>读取</strong>：可以<strong>列出</strong> (ls) 目录中的内容（即看到有哪些文件）。</td>
@@ -416,161 +485,205 @@
 <td><strong>执行</strong>：可以将该文件作为程序来运行。</td>
 <td><strong>执行</strong>：可以<strong>进入</strong> (cd) 该目录。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>两个关键的理解要点：</strong></p>
 <ol>
-<li><p><strong>目录的 <code>w</code> 权限</strong>：你对一个文件 <code>file.txt</code> 即使有 <code>w</code> (写入) 权限，但如果你对它所在的目录 <em>没有</em> <code>w</code> (写入) 权限，你仍然<strong>不能删除</strong> <code>file.txt</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1365">22:45</a>]。因为删除文件是在修改目录的内容，这需要目录的 <code>w</code> 权限。</p>
+<li>
+<p><strong>目录的 <code>w</code> 权限</strong>：你对一个文件 <code>file.txt</code> 即使有 <code>w</code> (写入) 权限，但如果你对它所在的目录 <em>没有</em> <code>w</code> (写入) 权限，你仍然<strong>不能删除</strong> <code>file.txt</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1365">22:45</a>]。因为删除文件是在修改目录的内容，这需要目录的 <code>w</code> 权限。</p>
 </li>
-<li><p><strong>目录的 <code>x</code> 权限</strong>：<code>x</code> 权限非常容易被误解。它代表“进入”或“穿过”权限。如果你想访问 <code>/usr/bin/echo</code> 这个文件，你<em>必须</em>对 <code>/</code>、<code>/usr</code> 和 <code>/usr/bin</code> 这<em>所有</em>层级的目录都拥有 <code>x</code> (执行) 权限 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1378">22:58</a>]。</p>
+<li>
+<p><strong>目录的 <code>x</code> 权限</strong>：<code>x</code> 权限非常容易被误解。它代表“进入”或“穿过”权限。如果你想访问 <code>/usr/bin/echo</code> 这个文件，你<em>必须</em>对 <code>/</code>、<code>/usr</code> 和 <code>/usr/bin</code> 这<em>所有</em>层级的目录都拥有 <code>x</code> (执行) 权限 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1378">22:58</a>]。</p>
 </li>
 </ol>
-<h4 id="6-Shell-的真正力量：流、重定向与管道"><a href="#6-Shell-的真正力量：流、重定向与管道" class="headerlink" title="6. Shell 的真正力量：流、重定向与管道"></a>6. Shell 的真正力量：流、重定向与管道</h4><p>到目前为止，我们只在孤立地运行程序。Shell 的真正力量在于<strong>组合 (combining)</strong> 它们 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1678">27:58</a>]。</p>
-<p><strong>流 (Streams) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1698">28:18</a>]</strong></p>
+<h4 id="6-shell-的真正力量流-重定向与管道"><a class="markdownIt-Anchor" href="#6-shell-的真正力量流-重定向与管道"></a> 6. Shell 的真正力量：流、重定向与管道</h4>
+<p>到目前为止，我们只在孤立地运行程序。Shell 的真正力量在于<strong>组合 (combining)</strong> 它们 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1678">27:58</a>]。</p>
+<p><strong>流 (Streams) [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1698">28:18</a>]</strong></p>
 <p>简单来说，每个程序默认都有两个“流”：</p>
 <ol>
-<li><p><strong>输入流 (Input Stream)</strong>：程序从哪里读取数据。默认是你的<strong>键盘</strong>。</p>
+<li>
+<p><strong>输入流 (Input Stream)</strong>：程序从哪里读取数据。默认是你的<strong>键盘</strong>。</p>
 </li>
-<li><p><strong>输出流 (Output Stream)</strong>：程序往哪里写入数据。默认是你的<strong>屏幕</strong>。</p>
+<li>
+<p><strong>输出流 (Output Stream)</strong>：程序往哪里写入数据。默认是你的<strong>屏幕</strong>。</p>
 </li>
 </ol>
 <p>Shell 允许你“重定向 (rewire)”这些流。</p>
-<p><strong>I&#x2F;O 重定向 (Redirection)</strong></p>
+<p><strong>I/O 重定向 (Redirection)</strong></p>
 <ul>
-<li><p><strong><code>&gt;</code> (输出重定向)</strong>：将程序的<em>输出流</em>重定向到一个文件（会<strong>覆盖</strong>文件原内容）。</p>
+<li>
+<p><strong><code>&gt;</code> (输出重定向)</strong>：将程序的<em>输出流</em>重定向到一个文件（会<strong>覆盖</strong>文件原内容）。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello&quot;</span> &gt; hello.txt</span><br></pre></td></tr></table></figure>
-<p>  这条命令不会在屏幕上打印 “hello”。相反，”hello” 被写入了 <code>hello.txt</code> 文件中 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1768">29:28</a>]。</p>
+<p>这条命令不会在屏幕上打印 “hello”。相反，“hello” 被写入了 <code>hello.txt</code> 文件中 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1768">29:28</a>]。</p>
 </li>
-<li><p><strong><code>&gt;&gt;</code> (追加重定向)</strong>：将程序的<em>输出流</em> <strong>追加 (Append)</strong> 到文件末尾（不会覆盖）。</p>
+<li>
+<p><strong><code>&gt;&gt;</code> (追加重定向)</strong>：将程序的<em>输出流</em> <strong>追加 (Append)</strong> 到文件末尾（不会覆盖）。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;world&quot;</span> &gt;&gt; hello.txt</span><br></pre></td></tr></table></figure>
-<p>  现在 <code>hello.txt</code> 的内容是 “hello\nworld” [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1875">31:15</a>]。</p>
+<p>现在 <code>hello.txt</code> 的内容是 “hello\nworld” [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1875">31:15</a>]。</p>
 </li>
-<li><p><strong><code>&lt;</code> (输入重定向)</strong>：将一个文件的内容作为程序的<em>输入流</em>。</p>
+<li>
+<p><strong><code>&lt;</code> (输入重定向)</strong>：将一个文件的内容作为程序的<em>输入流</em>。</p>
 <ul>
-<li><p><code>cat</code> 是一个会把它接收到的<em>所有输入</em>原样打印到<em>输出</em>的程序。</p>
+<li>
+<p><code>cat</code> 是一个会把它接收到的<em>所有输入</em>原样打印到<em>输出</em>的程序。</p>
 </li>
-<li><p><code>cat &lt; hello.txt</code></p>
+<li>
+<p><code>cat &lt; hello.txt</code></p>
 </li>
-<li><p>这条命令告诉 Shell：把 <code>hello.txt</code> 的内容喂给 <code>cat</code> 程序作为输入。<code>cat</code> 接收到 “hello\nworld”，于是把它们打印到屏幕（默认输出流）上 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1813">30:13</a>]。</p>
+<li>
+<p>这条命令告诉 Shell：把 <code>hello.txt</code> 的内容喂给 <code>cat</code> 程序作为输入。<code>cat</code> 接收到 “hello\nworld”，于是把它们打印到屏幕（默认输出流）上 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1813">30:13</a>]。</p>
 </li>
 </ul>
 </li>
 </ul>
 <p><strong>管道 (Pipe) <code>|</code></strong></p>
-<p>这是 Shell 中最强大、最核心的概念 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1912">31:52</a>]。</p>
+<p>这是 Shell 中最强大、最核心的概念 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1912">31:52</a>]。</p>
 <ul>
 <li><strong><code>|</code> (竖线)</strong>：它做的是：将<strong>左边</strong>程序的<strong>输出流</strong>，直接“用管子”连接到<strong>右边</strong>程序的<strong>输入流</strong>。</li>
 </ul>
-<p><strong>关键点</strong>：<code>ls</code> 根本不知道 <code>tail</code> 的存在，<code>tail</code> 也不知道 <code>ls</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1970">32:50</a>]。它们各自都只是在从自己的标准输入读取、向自己的标准输出写入。是 Shell 在幕后用“管道”把它们连接了起来。这种“解耦”和“可组合性”就是 Shell 力量的源泉。</p>
+<p><strong>关键点</strong>：<code>ls</code> 根本不知道 <code>tail</code> 的存在，<code>tail</code> 也不知道 <code>ls</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1970">32:50</a>]。它们各自都只是在从自己的标准输入读取、向自己的标准输出写入。是 Shell 在幕后用“管道”把它们连接了起来。这种“解耦”和“可组合性”就是 Shell 力量的源泉。</p>
 <p><strong>示例 1：简单管道</strong></p>
 <ul>
-<li><p><code>ls -l /</code>：会输出根目录下所有文件的长列表（很多行）。</p>
+<li>
+<p><code>ls -l /</code>：会输出根目录下所有文件的长列表（很多行）。</p>
 </li>
-<li><p><code>tail -n 1</code>：<code>tail</code> 程序会读取它的<em>输入</em>，并只打印<em>最后 1 行</em> (<code>-n 1</code>)。</p>
+<li>
+<p><code>tail -n 1</code>：<code>tail</code> 程序会读取它的<em>输入</em>，并只打印<em>最后 1 行</em> (<code>-n 1</code>)。</p>
 </li>
 </ul>
 <p>现在，我们用管道把它们连起来：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l / | <span class="built_in">tail</span> -n 1</span><br></pre></td></tr></table></figure>
-
-<p><code>ls</code> 的完整输出被“喂”给了 <code>tail</code> 作为输入，<code>tail</code> 处理后，只输出了最后一行 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=1929">32:09</a>]。</p>
+<p><code>ls</code> 的完整输出被“喂”给了 <code>tail</code> 作为输入，<code>tail</code> 处理后，只输出了最后一行 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=1929">32:09</a>]。</p>
 <p><strong>示例 2：高级管道链</strong></p>
-<p>这是一个（有点刻意的）例子，演示如何通过组合工具链来获取 <code>google.com</code> 首页的 <code>Content-Length</code>（内容长度）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2016">33:36</a>]：</p>
+<p>这是一个（有点刻意的）例子，演示如何通过组合工具链来获取 <code>google.com</code> 首页的 <code>Content-Length</code>（内容长度）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2016">33:36</a>]：</p>
 <ol>
-<li><p><code>curl --head --silent google.com</code>：<code>curl</code> 是一个网络请求工具，这个命令会获取 <code>google.com</code> 的 HTTP 响应头。</p>
+<li>
+<p><code>curl --head --silent google.com</code>：<code>curl</code> 是一个网络请求工具，这个命令会获取 <code>google.com</code> 的 HTTP 响应头。</p>
 </li>
-<li><p><code>| grep -i content-length</code>：<code>grep</code> 是一个文本搜索工具。<code>-i</code> 表示忽略大小写。它会从 <code>curl</code> 的输出中，只保留含有 “content-length” 的那一行。</p>
+<li>
+<p><code>| grep -i content-length</code>：<code>grep</code> 是一个文本搜索工具。<code>-i</code> 表示忽略大小写。它会从 <code>curl</code> 的输出中，只保留含有 “content-length” 的那一行。</p>
 </li>
-<li><p><code>| cut -d &#39; &#39; -f 2</code>：<code>cut</code> 是一个文本切割工具。<code>-d &#39; &#39;</code> 表示使用空格作为分隔符，<code>-f 2</code> 表示只保留第 2 个字段。</p>
+<li>
+<p><code>| cut -d ' ' -f 2</code>：<code>cut</code> 是一个文本切割工具。<code>-d ' '</code> 表示使用空格作为分隔符，<code>-f 2</code> 表示只保留第 2 个字段。</p>
 </li>
 </ol>
 <p><strong>整个命令</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --<span class="built_in">head</span> --silent google.com | grep -i content-length | <span class="built_in">cut</span> -d <span class="string">&#x27; &#x27;</span> -f 2</span><br></pre></td></tr></table></figure>
-
 <p>通过这个“三级管道”，你从一堆原始的网络信息中，精确地提取出了你想要的那个数字。你用三个<em>通用</em>的程序，组合出了一个<em>专用</em>的工具。</p>
-<p>这种能力不仅限于文本，你也可以用管道来处理图像、视频流（例如，将视频文件流式传输到 Chromecast）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2081">34:41</a>]。</p>
-<h4 id="7-实战演练：sudo-权限与“重定向陷阱”"><a href="#7-实战演练：sudo-权限与“重定向陷阱”" class="headerlink" title="7. 实战演练：sudo 权限与“重定向陷阱”"></a>7. 实战演练：<code>sudo</code> 权限与“重定向陷阱”</h4><p>在 Linux&#x2F;macOS 系统中，有一个特殊用户 <code>root</code>（也叫超级用户），它的用户 ID 是 0 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2143">35:43</a>]。<code>root</code> 用户不受权限限制，可以对系统做任何事情。</p>
+<p>这种能力不仅限于文本，你也可以用管道来处理图像、视频流（例如，将视频文件流式传输到 Chromecast）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2081">34:41</a>]。</p>
+<h4 id="7-实战演练sudo-权限与重定向陷阱"><a class="markdownIt-Anchor" href="#7-实战演练sudo-权限与重定向陷阱"></a> 7. 实战演练：<code>sudo</code> 权限与“重定向陷阱”</h4>
+<p>在 Linux/macOS 系统中，有一个特殊用户 <code>root</code>（也叫超级用户），它的用户 ID 是 0 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2143">35:43</a>]。<code>root</code> 用户不受权限限制，可以对系统做任何事情。</p>
 <p><strong><code>sudo</code> (Super User Do)</strong></p>
 <ul>
-<li><p>你平时应该（也必须）作为普通用户（例如 <code>john</code>）操作，这更安全 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2174">36:14</a>]。</p>
+<li>
+<p>你平时应该（也必须）作为普通用户（例如 <code>john</code>）操作，这更安全 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2174">36:14</a>]。</p>
 </li>
-<li><p>当你需要执行“管理员”才能做的操作时，你使用 sudo 命令：</p>
-<p>  sudo [command]</p>
-<p>  sudo 会让你输入你自己的密码，然后只以 root 权限运行你指定的那条 [command] [36:35]。</p>
+<li>
+<p>当你需要执行“管理员”才能做的操作时，你使用 sudo 命令：</p>
+<p>sudo [command]</p>
+<p>sudo 会让你输入你自己的密码，然后只以 root 权限运行你指定的那条 [command] [36:35]。</p>
 </li>
 </ul>
 <p><strong>一个实战场景：修改屏幕亮度</strong></p>
 <ul>
-<li><p>在 Linux 系统中，很多硬件参数被抽象为 <code>/sys</code> 目录下的虚拟文件 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2223">37:03</a>]。</p>
+<li>
+<p>在 Linux 系统中，很多硬件参数被抽象为 <code>/sys</code> 目录下的虚拟文件 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2223">37:03</a>]。</p>
 </li>
-<li><p>例如，屏幕亮度可能由 <code>/sys/class/backlight/intel_backlight/brightness</code> 这个文件控制。</p>
+<li>
+<p>例如，屏幕亮度可能由 <code>/sys/class/backlight/intel_backlight/brightness</code> 这个文件控制。</p>
 </li>
-<li><p><code>cat brightness</code>：可以读取当前亮度值 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2288">38:08</a>]。</p>
+<li>
+<p><code>cat brightness</code>：可以读取当前亮度值 [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2288">38:08</a>]。</p>
 </li>
-<li><p>尝试修改：</p>
-<p>  echo 500 &gt; brightness</p>
-<p>  结果：Permission denied (权限被拒绝) [38:35]。</p>
-<p>  这是正常的，因为只有 root 才能修改这些内核参数。</p>
+<li>
+<p>尝试修改：</p>
+<p>echo 500 &gt; brightness</p>
+<p>结果：Permission denied (权限被拒绝) [38:35]。</p>
+<p>这是正常的，因为只有 root 才能修改这些内核参数。</p>
 </li>
-<li><p>尝试使用 sudo（The “Gotcha” 陷阱）：</p>
-<p>  sudo echo 500 &gt; brightness</p>
-<p>  结果：Permission denied (权限被拒绝) [38:48]。</p>
+<li>
+<p>尝试使用 sudo（The “Gotcha” 陷阱）：</p>
+<p>sudo echo 500 &gt; brightness</p>
+<p>结果：Permission denied (权限被拒绝) [38:48]。</p>
 </li>
-<li><p>为什么会失败？ [39:01]</p>
-<p>  这是一个至关重要的概念：I&#x2F;O 重定向 (&gt;) 是由 Shell 自己处理的，而不是由你运行的程序 (sudo) 处理的。</p>
+<li>
+<p>为什么会失败？ [39:01]</p>
+<p>这是一个至关重要的概念：I/O 重定向 (&gt;) 是由 Shell 自己处理的，而不是由你运行的程序 (sudo) 处理的。</p>
 <ol>
-<li><p>Shell（正以 <em><code>john</code></em> 用户的身份）在<em>执行</em>命令前，首先看到了 <code>&gt;</code> 符号。</p>
+<li>
+<p>Shell（正以 <em><code>john</code></em> 用户的身份）在<em>执行</em>命令前，首先看到了 <code>&gt;</code> 符号。</p>
 </li>
-<li><p>Shell（作为 <em><code>john</code></em>）尝试打开 <code>brightness</code> 文件以便写入。</p>
+<li>
+<p>Shell（作为 <em><code>john</code></em>）尝试打开 <code>brightness</code> 文件以便写入。</p>
 </li>
-<li><p>系统内核拒绝了 <em><code>john</code></em> 的写入请求。</p>
+<li>
+<p>系统内核拒绝了 <em><code>john</code></em> 的写入请求。</p>
 </li>
-<li><p>命令甚至还没来得及执行（<code>sudo echo 500</code> 根本没运行），Shell 就报告了 “Permission denied” 错误。</p>
+<li>
+<p>命令甚至还没来得及执行（<code>sudo echo 500</code> 根本没运行），Shell 就报告了 “Permission denied” 错误。</p>
 </li>
 </ol>
 </li>
-<li><p>解决方案 1：切换到 Root Shell (不推荐)</p>
-<p>  sudo su [40:20]</p>
-<p>  这会让你完全切换到一个 root 权限的 Shell（提示符会从 $ 变为 #）。</p>
-<p>  在这个新 Shell 里，echo 500 &gt; brightness 就可以工作了，因为现在是 root Shell 在处理 &gt; 重定向 [40:47]。但这很危险，因为你容易忘记你正处于“上帝模式”。</p>
+<li>
+<p>解决方案 1：切换到 Root Shell (不推荐)</p>
+<p>sudo su [40:20]</p>
+<p>这会让你完全切换到一个 root 权限的 Shell（提示符会从 $ 变为 #）。</p>
+<p>在这个新 Shell 里，echo 500 &gt; brightness 就可以工作了，因为现在是 root Shell 在处理 &gt; 重定向 [40:47]。但这很危险，因为你容易忘记你正处于“上帝模式”。</p>
 </li>
-<li><p><strong>解决方案 2：使用管道和 <code>tee</code> (推荐)</strong></p>
+<li>
+<p><strong>解决方案 2：使用管道和 <code>tee</code> (推荐)</strong></p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 500 | <span class="built_in">sudo</span> <span class="built_in">tee</span> brightness</span><br></pre></td></tr></table></figure>
-<p>  <strong>工作原理</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2477">41:17</a>]：</p>
+<p><strong>工作原理</strong> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2477">41:17</a>]：</p>
 <ol>
-<li><p><code>echo 500</code>：这个命令由<em>你</em> ( <code>john</code> ) 来执行，它只是简单地产生 “500” 这个文本，并将其发送到<em>输出流</em>。</p>
+<li>
+<p><code>echo 500</code>：这个命令由<em>你</em> ( <code>john</code> ) 来执行，它只是简单地产生 “500” 这个文本，并将其发送到<em>输出流</em>。</p>
 </li>
-<li><p><code>|</code> (管道)：接管了 “500” 这个输出，并将其作为<em>输入流</em>“喂”给下一个命令。</p>
+<li>
+<p><code>|</code> (管道)：接管了 “500” 这个输出，并将其作为<em>输入流</em>“喂”给下一个命令。</p>
 </li>
-<li><p><code>sudo tee brightness</code>：</p>
+<li>
+<p><code>sudo tee brightness</code>：</p>
 <ul>
-<li><p><code>sudo</code> 以 <code>root</code> 权限启动了 <code>tee</code> 命令。</p>
+<li>
+<p><code>sudo</code> 以 <code>root</code> 权限启动了 <code>tee</code> 命令。</p>
 </li>
-<li><p><code>tee</code> 是一个程序，它会从<em>输入流</em>（这里是管道传来的 “500”）中读取数据，并同时做两件事：a) 把它打印到<em>输出流</em>（屏幕）；b) 把它写入到参数指定的文件中（这里是 <code>brightness</code>）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2499">41:39</a>]。</p>
+<li>
+<p><code>tee</code> 是一个程序，它会从<em>输入流</em>（这里是管道传来的 “500”）中读取数据，并同时做两件事：a) 把它打印到<em>输出流</em>（屏幕）；b) 把它写入到参数指定的文件中（这里是 <code>brightness</code>）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2499">41:39</a>]。</p>
 </li>
 </ul>
 </li>
-<li><p>因为是 <code>tee</code> 程序（它正以 <code>root</code> 权限运行）去打开 <code>brightness</code> 文件进行写入，所以权限检查通过了。</p>
+<li>
+<p>因为是 <code>tee</code> 程序（它正以 <code>root</code> 权限运行）去打开 <code>brightness</code> 文件进行写入，所以权限检查通过了。</p>
 </li>
 </ol>
 </li>
 </ul>
 <p>这个技巧完美地解决了“重定向陷阱”，它只在真正需要权限的步骤（写入文件）才使用 <code>sudo</code>。</p>
-<hr>
-<h3 id="框架-心智模型-Framework-Mindset"><a href="#框架-心智模型-Framework-Mindset" class="headerlink" title="框架 &amp; 心智模型 (Framework &amp; Mindset)"></a>框架 &amp; 心智模型 (Framework &amp; Mindset)</h3><h4 id="1-心智模型：I-O-流与可组合的“管道”"><a href="#1-心智模型：I-O-流与可组合的“管道”" class="headerlink" title="1. 心智模型：I&#x2F;O 流与可组合的“管道”"></a>1. 心智模型：I&#x2F;O 流与可组合的“管道”</h4><p>这堂课介绍的最核心的心智模型，是<strong>将程序视为处理“文本流”的过滤器 (Filter)</strong>，而不是孤立的、大而全的应用。</p>
+<hr />
+<h3 id="框架-心智模型-framework-mindset"><a class="markdownIt-Anchor" href="#框架-心智模型-framework-mindset"></a> 框架 &amp; 心智模型 (Framework &amp; Mindset)</h3>
+<h4 id="1-心智模型io-流与可组合的管道"><a class="markdownIt-Anchor" href="#1-心智模型io-流与可组合的管道"></a> 1. 心智模型：I/O 流与可组合的“管道”</h4>
+<p>这堂课介绍的最核心的心智模型，是<strong>将程序视为处理“文本流”的过滤器 (Filter)</strong>，而不是孤立的、大而全的应用。</p>
 <p>在图形界面 (GUI) 中，一个程序（比如 Word）包揽了所有功能：打开文件、编辑、保存、打印。而在 Shell 的世界里，推崇的是“Unix 哲学”（视频中未明确提此词，但体现了该思想）：</p>
 <ol>
-<li><p><strong>程序应该只做一件事，并把它做好。</strong></p>
+<li>
+<p><strong>程序应该只做一件事，并把它做好。</strong></p>
 <ul>
-<li><p><code>ls</code> 只管列出文件。</p>
+<li>
+<p><code>ls</code> 只管列出文件。</p>
 </li>
-<li><p><code>grep</code> 只管搜索文本。</p>
+<li>
+<p><code>grep</code> 只管搜索文本。</p>
 </li>
-<li><p><code>cut</code> 只管切割文本。</p>
+<li>
+<p><code>cut</code> 只管切割文本。</p>
 </li>
-<li><p><code>tail</code> 只管提取末尾几行。</p>
+<li>
+<p><code>tail</code> 只管提取末尾几行。</p>
 </li>
 </ul>
 </li>
-<li><p><strong>程序应该能协同工作。</strong></p>
+<li>
+<p><strong>程序应该能协同工作。</strong></p>
 <ul>
 <li>所有程序都默认从<strong>标准输入 (Standard Input)</strong> 读取数据，向<strong>标准输出 (Standard Output)</strong> 写入数据。</li>
 </ul>
@@ -578,73 +691,91 @@
 </ol>
 <p>这个模型的“框架”就是 Shell 提供的“连接器”：</p>
 <ul>
-<li><p><strong><code>&lt;</code> 和 <code>&gt;</code> (重定向)</strong>：这是程序与<strong>文件</strong>之间的连接器。它们将程序的输入&#x2F;输出流从默认的键盘&#x2F;屏幕“重定向”到文件。</p>
+<li>
+<p><strong><code>&lt;</code> 和 <code>&gt;</code> (重定向)</strong>：这是程序与<strong>文件</strong>之间的连接器。它们将程序的输入/输出流从默认的键盘/屏幕“重定向”到文件。</p>
 </li>
-<li><p><strong><code>|</code> (管道)</strong>：这是<strong>程序与程序之间</strong>的连接器。它将前一个程序的标准输出“焊接”到后一个程序的标准输入上。</p>
+<li>
+<p><strong><code>|</code> (管道)</strong>：这是<strong>程序与程序之间</strong>的连接器。它将前一个程序的标准输出“焊接”到后一个程序的标准输入上。</p>
 </li>
 </ul>
 <p><strong>这个框架的威力在于“可组合性” (Composability)。</strong></p>
 <p>当你面对一个新问题时，你的思维方式不应该是“我需要一个能XXX的软件”，而应该是“我是否能用 <code>a</code> 程序获取原始数据，然后用 <code>b</code> 程序过滤，再用 <code>c</code> 程序提取，最后用 <code>d</code> 程序格式化？”</p>
-<p>视频中的 <code>curl | grep | cut</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2016">33:36</a>] 链条就是这个心智模型的完美体现：</p>
+<p>视频中的 <code>curl | grep | cut</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2016">33:36</a>] 链条就是这个心智模型的完美体现：</p>
 <ul>
-<li><p><strong>数据源 (Source)</strong>：<code>curl</code>，它从互联网获取原始数据流。</p>
+<li>
+<p><strong>数据源 (Source)</strong>：<code>curl</code>，它从互联网获取原始数据流。</p>
 </li>
-<li><p><strong>过滤器 1 (Filter)</strong>：<code>grep</code>，它从数据流中筛选出感兴趣的行。</p>
+<li>
+<p><strong>过滤器 1 (Filter)</strong>：<code>grep</code>，它从数据流中筛选出感兴趣的行。</p>
 </li>
-<li><p><strong>过滤器 2 (Filter)</strong>：<code>cut</code>，它从上一步的行中提取出我们真正想要的字段。</p>
+<li>
+<p><strong>过滤器 2 (Filter)</strong>：<code>cut</code>，它从上一步的行中提取出我们真正想要的字段。</p>
 </li>
-<li><p><strong>汇入点 (Sink)</strong>：你的屏幕（或者你可以用 <code>&gt; output.txt</code> 汇入到文件）。</p>
+<li>
+<p><strong>汇入点 (Sink)</strong>：你的屏幕（或者你可以用 <code>&gt; output.txt</code> 汇入到文件）。</p>
 </li>
 </ul>
-<p>这个模型是整个 Shell 乃至 Linux&#x2F;Unix 系统设计的基石。它允许你使用几个非常简单的工具，像搭乐高积木一样，搭建出无限复杂的自定义工作流，而无需编写一行传统意义上的代码。</p>
-<h4 id="2-框架：sudo-权限提升的“tee-技巧”"><a href="#2-框架：sudo-权限提升的“tee-技巧”" class="headerlink" title="2. 框架：sudo 权限提升的“tee 技巧”"></a>2. 框架：<code>sudo</code> 权限提升的“tee 技巧”</h4><p>这是一个更具体、战术性的框架，用于解决一个在 Shell 中极其常见的权限问题。</p>
+<p>这个模型是整个 Shell 乃至 Linux/Unix 系统设计的基石。它允许你使用几个非常简单的工具，像搭乐高积木一样，搭建出无限复杂的自定义工作流，而无需编写一行传统意义上的代码。</p>
+<h4 id="2-框架sudo-权限提升的tee-技巧"><a class="markdownIt-Anchor" href="#2-框架sudo-权限提升的tee-技巧"></a> 2. 框架：<code>sudo</code> 权限提升的“tee 技巧”</h4>
+<p>这是一个更具体、战术性的框架，用于解决一个在 Shell 中极其常见的权限问题。</p>
 <ol>
 <li>问题 (The Problem):</li>
 </ol>
-<p>你需要以普通用户身份，将数据写入一个只有 root 用户才能写入的文件（例如 &#x2F;sys&#x2F; 或 &#x2F;proc&#x2F; 下的系统文件）。</p>
+<p>你需要以普通用户身份，将数据写入一个只有 root 用户才能写入的文件（例如 /sys/ 或 /proc/ 下的系统文件）。</p>
 <ol start="2">
 <li>陷阱 (The Gotcha):</li>
 </ol>
-<p>天真的尝试 sudo echo “data” &gt; &#x2F;path&#x2F;to&#x2F;root_file 会失败。</p>
+<p>天真的尝试 sudo echo “data” &gt; /path/to/root_file 会失败。</p>
 <ol start="3">
 <li>根本原因 (The Root Cause):</li>
 </ol>
-<p>I&#x2F;O 重定向 (&gt;) 是由当前 Shell（以普通用户运行）在命令执行前解析的 <a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2353">39:13</a>。你的普通用户 Shell 没有权限打开那个 root_file，因此操作在 sudo 生效前就失败了。</p>
+<p>I/O 重定向 (&gt;) 是由当前 Shell（以普通用户运行）在命令执行前解析的 <a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2353">39:13</a>。你的普通用户 Shell 没有权限打开那个 root_file，因此操作在 sudo 生效前就失败了。</p>
 <p><strong>4. 解决方案框架 (The Framework):</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[data_generator] | <span class="built_in">sudo</span> <span class="built_in">tee</span> [target_file]</span><br></pre></td></tr></table></figure>
-
 <p><strong>框架组件解析：</strong></p>
 <ul>
-<li><p><strong><code>[data_generator]</code>（数据生成器）</strong>：</p>
+<li>
+<p><strong><code>[data_generator]</code>（数据生成器）</strong>：</p>
 <ul>
-<li><p>这是任何能够产生你<em>想要写入的数据</em>的命令。</p>
+<li>
+<p>这是任何能够产生你<em>想要写入的数据</em>的命令。</p>
 </li>
-<li><p>它<strong>作为普通用户</strong>运行。</p>
+<li>
+<p>它<strong>作为普通用户</strong>运行。</p>
 </li>
-<li><p>例子：<code>echo 500</code>（生成 “500” 字符串）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2477">41:17</a>]。</p>
+<li>
+<p>例子：<code>echo 500</code>（生成 “500” 字符串）[<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2477">41:17</a>]。</p>
 </li>
 </ul>
 </li>
-<li><p><strong><code>|</code>（管道）</strong>：</p>
+<li>
+<p><strong><code>|</code>（管道）</strong>：</p>
 <ul>
-<li><p>这是框架的“传输带”。</p>
+<li>
+<p>这是框架的“传输带”。</p>
 </li>
-<li><p>它将 <code>[data_generator]</code> 的<em>标准输出</em>（数据），传输给下一个命令的<em>标准输入</em>。</p>
+<li>
+<p>它将 <code>[data_generator]</code> 的<em>标准输出</em>（数据），传输给下一个命令的<em>标准输入</em>。</p>
 </li>
 </ul>
 </li>
-<li><p><strong><code>sudo tee [target_file]</code>（特权写入器）</strong>：</p>
+<li>
+<p><strong><code>sudo tee [target_file]</code>（特权写入器）</strong>：</p>
 <ul>
-<li><p>这是框架的核心。</p>
+<li>
+<p>这是框架的核心。</p>
 </li>
-<li><p><code>sudo</code> 将 <code>tee</code> 命令的权限提升为 <code>root</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&t=2525">42:05</a>]。</p>
+<li>
+<p><code>sudo</code> 将 <code>tee</code> 命令的权限提升为 <code>root</code> [<a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=Z56Jmr9Z34Q&amp;t=2525">42:05</a>]。</p>
 </li>
-<li><p><code>tee</code> 是一个巧妙的工具，它从标准输入（即管道）读取数据，然后将其写入到 <code>[target_file]</code> 文件中。</p>
+<li>
+<p><code>tee</code> 是一个巧妙的工具，它从标准输入（即管道）读取数据，然后将其写入到 <code>[target_file]</code> 文件中。</p>
 </li>
-<li><p><strong>关键点</strong>：因为 <code>tee</code> 是在 <code>sudo</code> 下以 <code>root</code> 权限运行的，所以当它尝试打开并写入 <code>[target_file]</code> 时，它拥有足够的权限，操作得以成功。</p>
+<li>
+<p><strong>关键点</strong>：因为 <code>tee</code> 是在 <code>sudo</code> 下以 <code>root</code> 权限运行的，所以当它尝试打开并写入 <code>[target_file]</code> 时，它拥有足够的权限，操作得以成功。</p>
 </li>
 </ul>
 </li>
 </ul>
-<p>这个框架的心智模型是**“将数据生成与数据写入相分离”** 。你作为普通用户负责“生成”数据（这是安全的），然后通过管道将数据“递交给”一个临时的、拥有 root 权限的“写入器”（sudo tee）来完成最后一步危险的写入操作。这远比 sudo su 切换到一个完整的 root Shell 要安全和优雅。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/angelysss">Angelysss</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/11/07/Lecture%201_The%20Shell/">http://example.com/2025/11/07/Lecture%201_The%20Shell/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">None</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Note/">Note</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="WeChat"/></a><div class="post-qr-code-desc">WeChat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/02/Vim/" title="Vim"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-02</div><div class="info-item-2">Vim</div></div><div class="info-2"><div class="info-item-1">Missing SemesterModal editingVim is a modal editor.  Normal: for moving around a files and making edits Insert: for inserting text Command-line: for running a command Replace: for replacing text Visual(plain, line or block): for selecting blocks of text  Keystrokes have different meanings in different operating modes.e.g.x: In Insert mode will just insert a literal character ‘x’, but in Normal mode, it will delete the character under the cursor, and in Visual mode, it will delete the selectio...</div></div></div></a><a class="pagination-related" href="/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/" title="Lecture 2_Shell Tolls and Scripting"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-07</div><div class="info-item-2">Lecture 2_Shell Tolls and Scripting</div></div><div class="info-2"><div class="info-item-1">Overview本视频（Missing Semester 课程的第二讲）的核心论题是，Shell（特别是 Bash）远不止是一个简单的命令执行器，它本身就是一个功能完备且异常强大的编程环境。讲座的结论是，通过掌握 Shell 脚本的核心概念（如变量、控制流、函数）以及学会使用一系列高效的命令行工具（用于查找、搜索和导航），开发者可以将大量重复性的手动任务自动化，从而极大地提升工作效率和能力。 按照主题来梳理第一节：Shell 脚本编程——释放 Bash 的真正力量大多数开发者将 Shell 视为执行单个命令的地方，但它的真正潜力在于其“脚本”能力。本节深入探讨了将 Shell (Bash) 作为一种编程语言来使用的核心概念，这是实现自动化的基石。  变量（Variables）  在 Bash 中定义变量非常直接，使用 foo=bar 这样的语法 [01:07]。但这里有一个至关重要的“怪癖”：等号两边绝对不能有空格。  foo = bar [01:33]（注意空格）在 Bash 中不会被解释为变量赋值。相反，Shell 会尝试执行一个名为 foo 的程序，并将其余部分（= 和 b...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E4%B8%BB%E9%A2%98%E6%9D%A5%E6%A2%B3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">按照主题来梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D%EF%BC%9A%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E2%80%9C%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE%E2%80%9D%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 课程介绍：我们为什么需要“缺失的一课”？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Shell-%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%BF%9B%E5%85%A5%E6%96%87%E6%9C%AC%E9%A9%B1%E5%8A%A8%E7%9A%84%E4%B8%96%E7%95%8C"><span class="toc-number">2.2.</span> <span class="toc-text">2. Shell 基础：进入文本驱动的世界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Shell-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E7%A8%8B%E5%BA%8F%EF%BC%9APATH-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="toc-number">2.3.</span> <span class="toc-text">3. Shell 如何找到程序：PATH 环境变量与文件路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%88%AA%E4%B8%8E%E6%93%8D%E4%BD%9C"><span class="toc-number">2.4.</span> <span class="toc-text">4. 文件系统导航与操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%EF%BC%9Als-l-%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">2.5.</span> <span class="toc-text">5. 深入理解文件权限：ls -l 的秘密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Shell-%E7%9A%84%E7%9C%9F%E6%AD%A3%E5%8A%9B%E9%87%8F%EF%BC%9A%E6%B5%81%E3%80%81%E9%87%8D%E5%AE%9A%E5%90%91%E4%B8%8E%E7%AE%A1%E9%81%93"><span class="toc-number">2.6.</span> <span class="toc-text">6. Shell 的真正力量：流、重定向与管道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83%EF%BC%9Asudo-%E6%9D%83%E9%99%90%E4%B8%8E%E2%80%9C%E9%87%8D%E5%AE%9A%E5%90%91%E9%99%B7%E9%98%B1%E2%80%9D"><span class="toc-number">2.7.</span> <span class="toc-text">7. 实战演练：sudo 权限与“重定向陷阱”</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6-%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B-Framework-Mindset"><span class="toc-number">3.</span> <span class="toc-text">框架 &amp; 心智模型 (Framework &amp; Mindset)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B%EF%BC%9AI-O-%E6%B5%81%E4%B8%8E%E5%8F%AF%E7%BB%84%E5%90%88%E7%9A%84%E2%80%9C%E7%AE%A1%E9%81%93%E2%80%9D"><span class="toc-number">3.1.</span> <span class="toc-text">1. 心智模型：I&#x2F;O 流与可组合的“管道”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A1%86%E6%9E%B6%EF%BC%9Asudo-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87%E7%9A%84%E2%80%9Ctee-%E6%8A%80%E5%B7%A7%E2%80%9D"><span class="toc-number">3.2.</span> <span class="toc-text">2. 框架：sudo 权限提升的“tee 技巧”</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Angelysss</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>
+<p>这个框架的心智模型是“ <strong>将数据生成与数据写入相分离</strong> ”  。你作为普通用户负责“生成”数据（这是安全的），然后通过管道将数据“递交给”一个临时的、拥有 root 权限的“写入器”（sudo tee）来完成最后一步危险的写入操作。这远比 sudo su 切换到一个完整的 root Shell 要安全和优雅。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/angelysss">Angelysss</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/11/07/Lecture%201_The%20Shell/">http://example.com/2025/11/07/Lecture%201_The%20Shell/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">None</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Note/">Note</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="WeChat"/></a><div class="post-qr-code-desc">WeChat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/07/Lecture%202_Shell%20Tools%20and%20Scripting/" title="Lecture 2_Shell Tolls and Scripting"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-07</div><div class="info-item-2">Lecture 2_Shell Tolls and Scripting</div></div><div class="info-2"><div class="info-item-1"> Overview 本视频（Missing Semester 课程的第二讲）的核心论题是，Shell（特别是 Bash）远不止是一个简单的命令执行器，它本身就是一个功能完备且异常强大的编程环境。讲座的结论是，通过掌握 Shell 脚本的核心概念（如变量、控制流、函数）以及学会使用一系列高效的命令行工具（用于查找、搜索和导航），开发者可以将大量重复性的手动任务自动化，从而极大地提升工作效率和能力。  按照主题来梳理  第一节：Shell 脚本编程——释放 Bash 的真正力量 大多数开发者将 Shell 视为执行单个命令的地方，但它的真正潜力在于其“脚本”能力。本节深入探讨了将 Shell (Bash) 作为一种编程语言来使用的核心概念，这是实现自动化的基石。   变量（Variables）   在 Bash 中定义变量非常直接，使用 foo=bar 这样的语法 [01:07]。但这里有一个至关重要的“怪癖”：等号两边绝对不能有空格。   foo = bar [01:33]（注意空格）在 Bash 中不会被解释为变量赋值。相反，Shell 会尝试执行一个名为 foo 的程序，并将其...</div></div></div></a><a class="pagination-related" href="/2025/11/02/Vim/" title="Vim"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-02</div><div class="info-item-2">Vim</div></div><div class="info-2"><div class="info-item-1"> Missing Semester  Modal editing Vim is a modal editor.  Normal: for moving around a files and making edits Insert: for inserting text Command-line: for running a command Replace: for replacing text Visual(plain, line or block): for selecting blocks of text  Keystrokes have different meanings in different operating modes. e.g. x: In Insert mode will just insert a literal character ‘x’, but in Normal mode, it will delete the character under the cursor, and in Visual mode, it will delete the se...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text"> Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E4%B8%BB%E9%A2%98%E6%9D%A5%E6%A2%B3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 按照主题来梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%BC%BA%E5%A4%B1%E7%9A%84%E4%B8%80%E8%AF%BE"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 课程介绍：我们为什么需要“缺失的一课”？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-shell-%E5%9F%BA%E7%A1%80%E8%BF%9B%E5%85%A5%E6%96%87%E6%9C%AC%E9%A9%B1%E5%8A%A8%E7%9A%84%E4%B8%96%E7%95%8C"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. Shell 基础：进入文本驱动的世界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-shell-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E7%A8%8B%E5%BA%8Fpath-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. Shell 如何找到程序：PATH 环境变量与文件路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%88%AA%E4%B8%8E%E6%93%8D%E4%BD%9C"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. 文件系统导航与操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90ls-l-%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. 深入理解文件权限：ls -l 的秘密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-shell-%E7%9A%84%E7%9C%9F%E6%AD%A3%E5%8A%9B%E9%87%8F%E6%B5%81-%E9%87%8D%E5%AE%9A%E5%90%91%E4%B8%8E%E7%AE%A1%E9%81%93"><span class="toc-number">2.6.</span> <span class="toc-text"> 6. Shell 的真正力量：流、重定向与管道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83sudo-%E6%9D%83%E9%99%90%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E9%99%B7%E9%98%B1"><span class="toc-number">2.7.</span> <span class="toc-text"> 7. 实战演练：sudo 权限与“重定向陷阱”</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6-%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B-framework-mindset"><span class="toc-number">3.</span> <span class="toc-text"> 框架 &amp; 心智模型 (Framework &amp; Mindset)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8Bio-%E6%B5%81%E4%B8%8E%E5%8F%AF%E7%BB%84%E5%90%88%E7%9A%84%E7%AE%A1%E9%81%93"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. 心智模型：I&#x2F;O 流与可组合的“管道”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A1%86%E6%9E%B6sudo-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87%E7%9A%84tee-%E6%8A%80%E5%B7%A7"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. 框架：sudo 权限提升的“tee 技巧”</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Angelysss</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>
